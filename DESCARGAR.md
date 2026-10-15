@@ -11,9 +11,9 @@ Pulsa **Cargar CSV** y elige el archivo acumulado completo con la estructura ori
 - **Portafolio:** mix de productos y resultados por canal o corporación.
 - **Detalle:** tabla de campañas con encabezado fijo y desplazamiento interno.
 
-Los filtros son compartidos y se conservan al cambiar de vista. Marca varias casillas en un segmentador para combinar opciones. **Más filtros** permite elegir categorías, subcategorías, locales y fechas. Pulsa una barra, punto, arco o segmento para enfocarlo; quita su etiqueta o usa **Restablecer** para ampliar la selección. Los elementos elegidos se resaltan en rojo. La paleta utiliza rojo de marca y grises sobre fondos claros.
+Los once filtros están visibles arriba y se conservan al cambiar de vista: año, campaña, corporación, canal, familia, categoría, subcategoría, local, estado y fechas desde/hasta. Marca varias casillas en un segmentador para combinar opciones. Pulsa una barra, punto, arco o segmento para enfocarlo; quita su etiqueta o usa **Restablecer** para ampliar la selección. Los gráficos conservan sus colores al seleccionar. Un borde o un trazo más grueso identifica lo elegido. La paleta utiliza rojo de marca y grises sobre fondos claros.
 
-Las definiciones y la cobertura están disponibles en **Definiciones**, sin manual en la pantalla principal. En escritorio, las vistas se ajustan al alto disponible. En pantallas pequeñas, la distribución se adapta para conservar la legibilidad.
+**Definiciones** explica los indicadores con ejemplos sencillos: por ejemplo, 90% significa 90 de cada 100 pedidos. Está disponible incluso antes de cargar un CSV. El Resumen muestra preguntas claras, un dato y qué conviene revisar; no afirma causas que el archivo no permite demostrar. La tabla de Detalle tiene un marco visible, separación de columnas y filas alternadas. En escritorio, las vistas se ajustan al alto disponible. En pantallas pequeñas, la distribución se adapta para conservar la legibilidad.
 
 La carga reemplaza la fuente durante la sesión; no anexa ni duplica filas. Si falla la validación, conserva los datos anteriores. Al reabrir el HTML debes seleccionar de nuevo el CSV. No se incluyen datos comerciales en esta descarga.
 
