@@ -1,9 +1,14 @@
-# Dashboard Cyber con carga de CSV
+# Dashboard Cyber · versión interactiva
 
-Descarga este repositorio con Code → Download ZIP. Descomprime y abre **dashboard-cyber.html** (no index.html, que es la demostración anterior).
+Descarga el ZIP, descomprímelo y abre **dashboard-cyber.html**. `index.html` es la demostración antigua: no es el archivo actualizado.
 
-Pulsa **Cargar CSV** y elige el archivo acumulado completo con la estructura original. Los datos se procesan en tu navegador: no se suben a GitHub ni a otros servidores. El repositorio no incluye datos comerciales. No necesitas instalar nada.
+1. Pulsa **Cargar CSV** y elige el archivo acumulado completo con la estructura original.
+2. Abre los segmentadores y marca una o varias casillas. Ejemplo: Android e iOS, cruzados con dos campañas. Dentro de un segmentador se combinan las opciones; entre segmentadores se cruzan.
+3. Pulsa una barra, punto, arco o segmento para enfocarlo. Solo permanece lo elegido, en verde oscuro. Para añadir otras opciones del mismo gráfico, márcalas en el segmentador correspondiente. Ctrl/Cmd + clic permite ajustar la selección existente.
+4. Quita una opción con la × de su etiqueta. Usa **Restablecer** para volver a ver todo.
 
-La carga reemplaza la fuente de la sesión, sin anexar filas. Al reabrir o recargar, selecciona de nuevo tu CSV. El análisis permite filtrar por año, campaña, corporación, canal, familias/categorías/subcategorías, local y fechas. Incluye indicadores y filtros cruzados: columnas por campaña, línea del ticket, barras de productos y anillo de estados. Haz clic en una barra, punto, arco o segmento para filtrar los demás paneles; repite el clic o usa las etiquetas verdes para quitar la selección. El menú lateral marca la sección activa.
+Las tarjetas incluyen su definición. El menú lateral resalta tanto la sección elegida como su área de contenido. Los gráficos muestran transiciones de relleno y trazado; se respeta la preferencia del sistema de reducir movimiento. No hay avisos temporales al filtrar.
 
-La carga muestra «Carga completa» o «Carga incompleta (se procesaron N de TOTAL registros)». Si el archivo es inválido, conserva la fuente anterior. El detalle del error se puede consultar colocando el cursor sobre el mensaje.
+La carga reemplaza la fuente de la sesión; no duplica las filas al volver a cargar el mismo archivo. Si falla la validación, se conservan los datos anteriores y se muestra el recuento procesado. Al reabrir el HTML, vuelve a seleccionar el CSV. No se incluyen datos comerciales en este repositorio.
+
+El filtrado y los indicadores se calculan en un Worker local, con consultas agrupadas y caché de resultados. Los datos no se envían a servidores. La capacidad depende de la memoria y el equipo; no es ilimitada. No necesitas instalar nada.
