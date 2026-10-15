@@ -1,14 +1,20 @@
-# Dashboard Cyber · versión interactiva
+# Farmacias Peruanas · Inteligencia comercial
 
-Descarga el ZIP, descomprímelo y abre **dashboard-cyber.html**. `index.html` es la demostración antigua: no es el archivo actualizado.
+Descarga el ZIP, descomprímelo y abre **dashboard-cyber.html**. `index.html` es una demostración anterior; no es el archivo actualizado.
 
-1. Pulsa **Cargar CSV** y elige el archivo acumulado completo con la estructura original.
-2. Abre los segmentadores y marca una o varias casillas. Ejemplo: Android e iOS, cruzados con dos campañas. Dentro de un segmentador se combinan las opciones; entre segmentadores se cruzan.
-3. Pulsa una barra, punto, arco o segmento para enfocarlo. Solo permanece lo elegido y se resalta la selección. Las columnas usan verde oscuro por defecto; un asterisco indica campañas con fechas faltantes y su explicación aparece debajo del gráfico. Para añadir otras opciones del mismo gráfico, márcalas en el segmentador correspondiente. Ctrl/Cmd + clic permite ajustar la selección existente.
-4. Quita una opción con la × de su etiqueta. Usa **Restablecer** para volver a ver todo.
+Pulsa **Cargar CSV** y elige el archivo acumulado completo con la estructura original. Los datos se procesan en tu navegador y no se publican en GitHub.
 
-Las tarjetas incluyen su definición. El menú lateral resalta tanto la sección elegida como su área de contenido. Los gráficos muestran transiciones de relleno y trazado; se respeta la preferencia del sistema de reducir movimiento. No hay avisos temporales al filtrar.
+## Vistas
 
-La carga reemplaza la fuente de la sesión; no duplica las filas al volver a cargar el mismo archivo. Si falla la validación, se conservan los datos anteriores y se muestra el recuento procesado. Al reabrir el HTML, vuelve a seleccionar el CSV. No se incluyen datos comerciales en este repositorio.
+- **Resumen:** cuatro indicadores con definiciones y lecturas para decidir.
+- **Rendimiento:** columnas de venta por día, línea de ticket y anillo de pedidos, distribuidos horizontalmente.
+- **Portafolio:** mix de productos y resultados por canal o corporación.
+- **Detalle:** tabla de campañas con encabezado fijo y desplazamiento interno.
 
-El filtrado y los indicadores se calculan en un Worker local, con consultas agrupadas y caché de resultados. Los datos no se envían a servidores. La capacidad depende de la memoria y el equipo; no es ilimitada. No necesitas instalar nada.
+Los filtros son compartidos y se conservan al cambiar de vista. Marca varias casillas en un segmentador para combinar opciones. **Más filtros** permite elegir categorías, subcategorías, locales y fechas. Pulsa una barra, punto, arco o segmento para enfocarlo; quita su etiqueta o usa **Restablecer** para ampliar la selección. Los elementos elegidos se resaltan en rojo. La paleta utiliza rojo de marca y grises sobre fondos claros.
+
+Las definiciones y la cobertura están disponibles en **Definiciones**, sin manual en la pantalla principal. En escritorio, las vistas se ajustan al alto disponible. En pantallas pequeñas, la distribución se adapta para conservar la legibilidad.
+
+La carga reemplaza la fuente durante la sesión; no anexa ni duplica filas. Si falla la validación, conserva los datos anteriores. Al reabrir el HTML debes seleccionar de nuevo el CSV. No se incluyen datos comerciales en esta descarga.
+
+Los cálculos se realizan en un Worker local, con caché y consultas agrupadas. Las transiciones respetan la preferencia de reducir movimiento. La capacidad depende de la memoria y del equipo. No necesitas instalar nada.
