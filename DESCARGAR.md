@@ -18,3 +18,5 @@ Los once filtros están visibles arriba y se conservan al cambiar de vista: año
 La carga reemplaza la fuente durante la sesión; no anexa ni duplica filas. Si falla la validación, conserva los datos anteriores. Al reabrir el HTML debes seleccionar de nuevo el CSV. No se incluyen datos comerciales en esta descarga.
 
 Los cálculos se realizan en un Worker local, con caché y consultas agrupadas. Las transiciones respetan la preferencia de reducir movimiento. La capacidad depende de la memoria y del equipo. No necesitas instalar nada.
+
+Todos los valores monetarios se presentan en **soles (S/)**. Las tarjetas explican las ventas entregadas, cuántos pedidos se entregaron, el valor de las cancelaciones y rechazos, y la venta promedio por pedido entregado. Las definiciones usan ejemplos en soles y evitan expresiones como «suma de importes».
