@@ -20,3 +20,11 @@ La carga reemplaza la fuente durante la sesión; no anexa ni duplica filas. Si f
 Los cálculos se realizan en un Worker local, con caché y consultas agrupadas. Las transiciones respetan la preferencia de reducir movimiento. La capacidad depende de la memoria y del equipo. No necesitas instalar nada.
 
 Todos los valores monetarios se presentan en **soles (S/)**. Las tarjetas explican las ventas entregadas, cuántos pedidos se entregaron, el valor de las cancelaciones y rechazos, y la venta promedio por pedido entregado. Las definiciones usan ejemplos en soles y evitan expresiones como «suma de importes».
+
+## Indicadores y PDF ejecutivo
+
+Cada tarjeta muestra su unidad: **Ventas entregadas** y **Cancelaciones y rechazos**, en **soles (S/)**; **Pedidos entregados**, en **% de los pedidos seleccionados**; **Ticket promedio**, en **S/ por pedido entregado**.
+
+Con datos cargados, pulsa **PDF ejecutivo** para descargar un PDF real, sin impresora ni servicios externos. Incluye resumen de indicadores con valores completos, filtros y periodo elegidos, conclusiones y revisiones sugeridas, resultados por canal y familia, y campañas con sus coberturas. Se pagina automáticamente si el detalle crece. El informe identifica los filtros de estado y producto para evitar confundir sus resultados con el total del negocio. Los ejemplos de definiciones explican las unidades.
+
+La exportación se habilita al terminar el cálculo y solo si la selección tiene datos. El PDF usa exactamente los filtros actuales y se genera localmente; no se envía ni se publica en GitHub.
