@@ -185,6 +185,14 @@ body.exporting{display:flex;flex-direction:row;justify-content:center;align-item
 .creator-signature{font-size:11.5px;font-weight:500;gap:6px;margin:0 0 9px;color:#686f68}
 .linkedin-brand-icon{width:14px;height:14px;flex-basis:14px;color:#365e85}
 .lesson-layout>.sub{color:#686f68}
+
+/* Fixed identity sits outside the portion fitted to each lesson. */
+.viewport,.video-mode .viewport{display:flex;flex-direction:column;align-items:stretch}
+.persistent-header{flex:0 0 auto;width:100%;container-type:inline-size}
+.persistent-header .title,.lesson-scene .persistent-header .title{font-size:clamp(24px,10cqw,32px)!important}
+.persistent-header>.progress{margin-bottom:7px;background:#365e852b}
+.persistent-header>.progress .progress-fill{background:#365e85}
+.lesson-body-frame{position:relative;flex:1 1 0;min-height:0;width:100%;overflow:hidden}
 </style>
 </head>
 <body>
@@ -193,16 +201,18 @@ body.exporting{display:flex;flex-direction:row;justify-content:center;align-item
   <main class="stage" id="stage" aria-label="Presentación vertical educativa WHERE contra HAVING">
     <div class="monkey-theme" aria-hidden="true"><span class="monkey monkey-one"></span><span class="monkey monkey-two"></span><span class="monkey monkey-three"></span><span class="monkey monkey-four"></span></div>
     <div class="orb"></div>
-    <div class="viewport" id="viewport"><div class="lesson-layout" id="lessonLayout">
+    <div class="viewport" id="viewport"><header class="persistent-header" id="persistentHeader">
       <div class="brand-heading"><svg class="sql-brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="#365e85" d="M64 80C64-25 448-25 448 80v352c0 105-384 105-384 0Z"/><ellipse cx="256" cy="70" rx="136" ry="42" fill="#faf7ef"/><text x="256" y="325" text-anchor="middle" fill="#faf7ef" font-family="Arial, sans-serif" font-size="145" font-weight="700">SQL</text></svg><h1 class="title"><span class="cyan">WHERE</span> vs <span class="purple">HAVING</span></h1></div>
       <div class="progress"><div class="progress-fill" id="progress"></div></div>
       <div class="creator-signature" aria-label="LinkedIn: Jhordan.Orellana"><svg class="linkedin-brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96c0 .84.69 1.52 1.55 1.52h16.9c.86 0 1.55-.68 1.55-1.52V3.52c0-.84-.69-1.52-1.55-1.52ZM7.93 18.75H4.98V9.2h2.95v9.55ZM6.46 7.9a1.71 1.71 0 1 1 0-3.42 1.71 1.71 0 0 1 0 3.42Zm12.29 10.85H15.8V14.1c0-1.11-.02-2.54-1.55-2.54-1.55 0-1.79 1.21-1.79 2.46v4.73H9.51V9.2h2.83v1.31h.04c.39-.74 1.36-1.52 2.79-1.52 2.98 0 3.58 1.96 3.58 4.51v5.25Z"/></svg><span>Jhordan.Orellana</span></div>
+    </header>
+    <div class="lesson-body-frame" id="lessonBodyFrame"><div class="lesson-layout" id="lessonLayout">
       <div class="sub" id="subtitle">Una venta individual o un total: aprende cuándo filtrar.</div>
       <div class="scene-info"><div class="step-label" id="stepLabel">PASO 01</div></div>
       <h2 class="scene-head" id="sceneHead"></h2>
       <p class="scene-desc" id="sceneDesc"></p>
       <section class="content" id="content" aria-live="polite"></section>
-    </div></div>
+    </div></div></div>
     <div class="caption-bar" id="captionBar" aria-live="polite"></div>
   </main>
 </div>
@@ -2164,7 +2174,7 @@ const records=[['Ana','Belleza',120],['Ana','Belleza',80],['Luis','Farmacia',40]
 const times=[17.654, 21.662, 40.982, 27.158, 64.934, 34.766, 24.638];
 const totalTime=times.reduce((a,b)=>a+b,0);
 const parts=[
- {title:'¿Una venta o un total?',desc:'Primero filtraremos ventas con WHERE. Después usaremos HAVING sobre grupos de ventas.',label:'¡HOLA! VAMOS CON UN EJEMPLO',caption:'Primero WHERE: ventas individuales. Después HAVING: totales por cliente.',zoom:1,markup:()=>`<div class="glass intro-recap"><div class="kicker">Dos formas de mirar los datos</div><div class="recap"><div class="recap-box"><b>WHERE</b><p>Revisa cada venta individual.</p></div><div class="recap-box other"><b>HAVING</b><p>Filtra grupos de ventas.</p></div></div></div><div class="glass intro-example"><div class="kicker">Ana hizo dos compras</div><div class="intro-sales"><div class="receipt receipt-one"><svg class="receipt-icon" viewBox="0 0 32 36" fill="none" aria-hidden="true"><path d="M6 3l4 3 3-3 3 3 3-3 3 3 4-3v30l-4-3-3 3-3-3-3 3-3-3-4 3V3Z" stroke="currentColor" stroke-width="1.6"/><path d="M11 12h10M11 17h7M11 23h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Venta 1</span><b>S/ 120</b></div><span class="intro-plus">+</span><div class="receipt receipt-two"><svg class="receipt-icon" viewBox="0 0 32 36" fill="none" aria-hidden="true"><path d="M6 3l4 3 3-3 3 3 3-3 3 3 4-3v30l-4-3-3 3-3-3-3 3-3-3-4 3V3Z" stroke="currentColor" stroke-width="1.6"/><path d="M11 12h10M11 17h7M11 23h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Venta 2</span><b>S/ 80</b></div></div><div class="intro-sum"><span><span class="ana-avatar" aria-hidden="true">A</span>Total de Ana</span><b>S/ 200</b></div></div>`},
+ {title:'¿Una venta o un total?',desc:'Primero filtraremos ventas con WHERE. Después usaremos HAVING sobre grupos de ventas.',label:'¡HOLA! VAMOS CON UN EJEMPLO',caption:'Primero WHERE: ventas individuales. Después HAVING: totales por cliente.',zoom:1,markup:()=>`<div class="glass intro-recap"><div class="kicker">Dos formas de mirar los datos</div><div class="recap"><div class="recap-box"><b>WHERE</b><p>Revisa cada venta individual.</p></div><div class="recap-box other"><b>HAVING</b><p>Filtra grupos de ventas.</p></div></div></div><div class="glass intro-example"><div class="kicker">Ana hizo dos compras</div><div class="intro-sales"><div class="receipt receipt-one"><svg class="receipt-icon" viewBox="0 0 32 36" fill="none" aria-hidden="true"><path d="M6 3l4 3 3-3 3 3 3-3 3 3 4-3v30l-4-3-3 3-3-3-3 3-3-3-4 3V3Z" stroke="currentColor" stroke-width="1.6"/><path d="M11 12h10M11 17h7M11 23h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Venta 1</span><b>S/ 120</b></div><span class="intro-plus">+</span><div class="receipt receipt-two"><svg class="receipt-icon" viewBox="0 0 32 36" fill="none" aria-hidden="true"><path d="M6 3l4 3 3-3 3 3 3-3 3 3 4-3v30l-4-3-3 3-3-3-3 3-3-3-4 3V3Z" stroke="currentColor" stroke-width="1.6"/><path d="M11 12h10M11 17h7M11 23h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Venta 2</span><b>S/ 80</b></div></div><div class="intro-sum"><span>Total de Ana</span><b>S/ 200</b></div></div>`},
  {title:'Empecemos con 6 ventas',desc:'Cada fila es una compra. Ana, por ejemplo, tiene dos: S/ 120 y S/ 80.',label:'TABLA ORIGINAL',caption:'Observa a Ana, Luis y Carla y sus montos.',zoom:1.012,markup:()=>`<div class="glass focus zoom-target activated"><div class="kicker">Tabla · ventas</div>${table()}<div class="result-label">6 registros · 3 clientes</div></div>`},
  {title:'WHERE: filtra cada venta',desc:'La condición se aplica a cada venta: solo pasan los montos de S/ 100 o más.',label:'FILTRAR VENTAS INDIVIDUALES',caption:'WHERE revisa cada venta: monto mayor o igual a 100.',zoom:1,markup:()=>`${referenceTable(row=>row[2]<100?'fade-row':'highlight-row')}<div class="glass query-card"><div class="kicker">Consulta · de arriba hacia abajo</div>${whereCode()}</div>`},
  {title:'¿Qué ventas quedaron?',desc:'El resultado es una tabla con cliente y monto. Solo contiene las ventas que cumplen WHERE.',label:'RESULTADO DE WHERE',caption:'WHERE devuelve una tabla: cliente y monto, con dos filas.',zoom:1,markup:()=>`${referenceTable(row=>row[2]<100?'expired-row':'highlight-row')}<div class="glass filtered-result"><div class="kicker">Tabla resultado · cliente y monto</div>${table(null,records.filter(r=>r[2]>=100))}</div><div class="chapter-callout">WHERE descartó la venta de S/ 80 de Ana antes de calcular cualquier total.</div>`},
@@ -2234,7 +2244,7 @@ function startProgress(){
 let fitFrame=null,fitting=false,fitCache=null;
 function requestFit(){cancelAnimationFrame(fitFrame);fitFrame=requestAnimationFrame(fitLesson)}
 function fitLesson(){
- const viewport=el('viewport'),layout=el('lessonLayout');if(!viewport||!layout||fitting)return;
+ const viewport=el('lessonBodyFrame'),layout=el('lessonLayout');if(!viewport||!layout||fitting)return;
  const width=viewport.clientWidth,height=viewport.clientHeight;if(!width||!height)return;
  const key=[width,height,layout.offsetWidth,layout.offsetHeight,index,lastGuide].join('|');if(fitCache===key)return;fitting=true;layout.style.width=width+'px';let scale=1;
  if(layout.offsetHeight>height){
@@ -2318,7 +2328,7 @@ voiceAudio.ontimeupdate=syncNarration;
 
 voiceAudio.onended=()=>{pause();if(index!==parts.length-1)render(parts.length-1,true);motion.forEach(a=>{try{a.finish()}catch{}});guideScene(times[index]);fitLesson();el('progress').style.width='100%';};
 
-const lessonObserver=new ResizeObserver(requestFit);lessonObserver.observe(el('lessonLayout'));lessonObserver.observe(el('viewport'));
+const lessonObserver=new ResizeObserver(requestFit);lessonObserver.observe(el('lessonLayout'));lessonObserver.observe(el('viewport'));lessonObserver.observe(el('lessonBodyFrame'));
 if(window.visualViewport)window.visualViewport.addEventListener('resize',sizeVideo);
 
 function restoreOriginalVoice(){
@@ -2415,7 +2425,7 @@ async function startExport(){
   const encoder=new VideoEncoder({output:(chunk,meta)=>muxer.addVideoChunk(chunk,meta),error:error=>session.error=error});session.videoEncoder=encoder;encoder.configure(videoConfig);
   document.body.classList.add('video-mode','exporting');exportLayout();scrollTo(0,0);await document.fonts.ready;
   // Export has a fixed layout, independent of the desktop preview's size.
-  session.fixedStyle=document.createElement('style');session.fixedStyle.textContent='.exporting .stage{width:430px!important;height:764.444444px!important}.exporting .title{font-size:35px!important}.exporting .lesson-scene .title{font-size:32px!important}';document.head.append(session.fixedStyle);
+  session.fixedStyle=document.createElement('style');session.fixedStyle.textContent='.exporting .stage{width:430px!important;height:764.444444px!important}';document.head.append(session.fixedStyle);
   drawScene(0,true);fitLesson();session.fonts=exportFonts();
   session.base=document.createElement('canvas');session.base.width=profile.width;session.base.height=profile.height;session.baseContext=session.base.getContext('2d',{alpha:false});
   const canvas=document.createElement('canvas');canvas.width=profile.width;canvas.height=profile.height;const context=canvas.getContext('2d',{alpha:false});
