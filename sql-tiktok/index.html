@@ -175,6 +175,16 @@ body.exporting{display:flex;flex-direction:row;justify-content:center;align-item
 .sql-brand-icon{display:block;width:32px;height:36px;flex:0 0 32px;overflow:visible}
 .creator-signature{display:flex;align-items:center;gap:5px;margin:0 0 10px 42px;color:#686f68;font-size:9.5px;line-height:1.35;font-weight:500;letter-spacing:.1px;flex-shrink:0;white-space:nowrap}
 .linkedin-brand-icon{display:block;width:12px;height:12px;flex:0 0 12px;color:#64746e}
+
+/* Two-color header; separator directly under the title, then the creator credit. */
+.brand-heading{margin-bottom:7px}
+.brand-heading .title{color:#686f68}
+.brand-heading .title .cyan,.brand-heading .title .purple{color:#365e85}
+.lesson-layout>.progress{margin-bottom:7px;background:#365e852b}
+.lesson-layout>.progress .progress-fill{background:#365e85}
+.creator-signature{font-size:11.5px;font-weight:500;gap:6px;margin:0 0 9px;color:#686f68}
+.linkedin-brand-icon{width:14px;height:14px;flex-basis:14px;color:#365e85}
+.lesson-layout>.sub{color:#686f68}
 </style>
 </head>
 <body>
@@ -185,9 +195,9 @@ body.exporting{display:flex;flex-direction:row;justify-content:center;align-item
     <div class="orb"></div>
     <div class="viewport" id="viewport"><div class="lesson-layout" id="lessonLayout">
       <div class="brand-heading"><svg class="sql-brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="#365e85" d="M64 80C64-25 448-25 448 80v352c0 105-384 105-384 0Z"/><ellipse cx="256" cy="70" rx="136" ry="42" fill="#faf7ef"/><text x="256" y="325" text-anchor="middle" fill="#faf7ef" font-family="Arial, sans-serif" font-size="145" font-weight="700">SQL</text></svg><h1 class="title"><span class="cyan">WHERE</span> vs <span class="purple">HAVING</span></h1></div>
+      <div class="progress"><div class="progress-fill" id="progress"></div></div>
       <div class="creator-signature" aria-label="LinkedIn: Jhordan.Orellana"><svg class="linkedin-brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96c0 .84.69 1.52 1.55 1.52h16.9c.86 0 1.55-.68 1.55-1.52V3.52c0-.84-.69-1.52-1.55-1.52ZM7.93 18.75H4.98V9.2h2.95v9.55ZM6.46 7.9a1.71 1.71 0 1 1 0-3.42 1.71 1.71 0 0 1 0 3.42Zm12.29 10.85H15.8V14.1c0-1.11-.02-2.54-1.55-2.54-1.55 0-1.79 1.21-1.79 2.46v4.73H9.51V9.2h2.83v1.31h.04c.39-.74 1.36-1.52 2.79-1.52 2.98 0 3.58 1.96 3.58 4.51v5.25Z"/></svg><span>Jhordan.Orellana</span></div>
       <div class="sub" id="subtitle">Una venta individual o un total: aprende cuándo filtrar.</div>
-      <div class="progress"><div class="progress-fill" id="progress"></div></div>
       <div class="scene-info"><div class="step-label" id="stepLabel">PASO 01</div></div>
       <h2 class="scene-head" id="sceneHead"></h2>
       <p class="scene-desc" id="sceneDesc"></p>
