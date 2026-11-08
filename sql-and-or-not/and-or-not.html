@@ -2406,7 +2406,7 @@ voiceAudio.onended=()=>{pause();if(index!==parts.length-1)render(parts.length-1,
 
 // One media clock drives the live pointer, click cues and offline export.
 const teachingPointer=document.createElement('div');teachingPointer.id='narrationPointer';teachingPointer.setAttribute('aria-hidden','true');
-teachingPointer.innerHTML='<svg viewBox="0 0 18 24" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L17 12L8 15L5 23Z" fill="#365e85" stroke="#fffdf7" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+teachingPointer.innerHTML='<svg viewBox="0 0 18 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 8H9V3L17 12L9 21V16H2Z" fill="#365e85" stroke="#fffdf7" stroke-width="1.6" stroke-linejoin="round"/></svg>';
 el('stage').append(teachingPointer);
 let teachingPoint=null,teachingAudio=null,teachingLastTime=-1;
 const teachingMove=.95;
@@ -2447,7 +2447,7 @@ function updateTeachingPointer(elapsed){
 function drawTeachingPointer(ctx,profile){
  const p=teachingPoint;if(!p||p.opacity<=0)return;
  ctx.save();ctx.scale(profile.width/el('stage').clientWidth,profile.height/el('stage').clientHeight);ctx.translate(p.x,p.y);ctx.scale(14/18,19/24);ctx.globalAlpha=p.opacity;
- ctx.beginPath();ctx.moveTo(1,1);ctx.lineTo(17,12);ctx.lineTo(8,15);ctx.lineTo(5,23);ctx.closePath();ctx.fillStyle='#365e85';ctx.fill();ctx.strokeStyle='#fffdf7';ctx.lineWidth=1.6;ctx.lineJoin='round';ctx.stroke();ctx.restore();
+ ctx.beginPath();ctx.moveTo(2,8);ctx.lineTo(9,8);ctx.lineTo(9,3);ctx.lineTo(17,12);ctx.lineTo(9,21);ctx.lineTo(9,16);ctx.lineTo(2,16);ctx.closePath();ctx.fillStyle='#365e85';ctx.fill();ctx.strokeStyle='#fffdf7';ctx.lineWidth=1.6;ctx.lineJoin='round';ctx.stroke();ctx.restore();
 }
 function teachingClickTimes(duration){
  if(!el('teachingPointer').checked||!el('pointerClick').checked)return[];
