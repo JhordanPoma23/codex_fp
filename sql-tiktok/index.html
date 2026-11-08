@@ -85,16 +85,16 @@ body.video-mode{padding:0;background:#f7f5ef;display:block;overflow:hidden}.vide
 .video-mode .stage-frame{position:absolute;left:50%;top:0;width:430px;margin:0;transform:translateX(-50%) scale(var(--video-scale,1));transform-origin:top center}
 
 .viewport{transition:transform 1300ms cubic-bezier(.22,1,.36,1),transform-origin 1300ms cubic-bezier(.22,1,.36,1)}
-.guided-focus{outline:2px solid #b84b2eb3!important;outline-offset:4px;box-shadow:0 0 0 7px #f7f5efb8!important;position:relative;z-index:2}
-.code-line.guided-focus{outline-color:#e4a58a!important;box-shadow:0 0 0 5px #262b27!important;background:#e4a58a20}
-.table td.guided-focus{background:#f0ddc9;color:#8f3f27;font-weight:700}
+.guided-focus{outline:2px solid #b84b2eb3!important;outline-offset:4px;position:relative;z-index:2}
+.code-line.guided-focus{outline-color:#e4a58a!important;}
+.table td.guided-focus{;font-weight:700}
 @media(prefers-reduced-motion:reduce){.viewport{transform:none!important}}
 
 .title{margin-top:8px;margin-bottom:10px}.sub{margin-bottom:14px}.progress{margin-bottom:14px}.scene-info{margin-bottom:10px}.scene-head{font-size:26px;min-height:0;flex-shrink:0;margin-bottom:10px}.scene-desc{min-height:0;flex-shrink:0;margin-bottom:12px;font-size:11.5px}.content{gap:10px}.glass{padding:10px;flex-shrink:0}.kicker{margin-bottom:8px}.table td{padding:5px 6px}.table th{padding:7px 6px}.code{font-size:10px;line-height:1.75;padding:9px}.chapter-callout{font-size:10px;padding:4px 10px;flex-shrink:0}.big-statement{padding:22px 16px}.recap-box{min-height:140px}
 
 @media(max-width:370px){.glass{padding:8px}.table td{padding:4px 5px}.table th{padding:6px 5px}.code{font-size:9px;line-height:1.65;padding:7px}.content{gap:8px}.scene-desc{margin-bottom:8px}.scene-head{font-size:24px;margin-bottom:8px}.kicker{margin-bottom:6px}.chapter-callout{font-size:9px}}
 
-.guided-focus,.code-line.guided-focus,.table td.guided-focus{outline:none!important;box-shadow:none!important;background:revert;color:revert;font-weight:revert}
+.guided-focus,.code-line.guided-focus,.table td.guided-focus{outline:none!important;font-weight:revert}
 .reading-loupe{position:absolute;left:0;top:0;width:30px;height:30px;color:#b84b2e;z-index:8;pointer-events:none;opacity:0;transition:transform 1100ms cubic-bezier(.22,1,.36,1),opacity 400ms;filter:drop-shadow(0 2px 3px #262b2720)}
 .reading-loupe.visible{opacity:1}.reading-loupe svg{width:100%;height:100%}
 .group-formula{font:9px/1.5 ui-monospace,monospace;color:#77796f;margin:8px 0 2px}.grouping-code .code{font-size:13.5px;line-height:1.85}.grouping-code .code-line{white-space:nowrap}.group-result .value{margin-top:2px}
@@ -120,14 +120,14 @@ body.video-mode{padding:0;background:#f7f5ef;display:block;overflow:hidden}.vide
 /* The lens reproduces the selected value or SQL clause at reading size. */
 .reading-loupe{width:148px;height:122px;border:2px solid #bd5738;border-radius:62px;background:#fffdf7;color:#32392f;box-shadow:0 9px 24px #3d322b24;filter:none;z-index:12;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:15px 12px;transform:none;transition:left 850ms cubic-bezier(.22,1,.36,1),top 850ms cubic-bezier(.22,1,.36,1),opacity 250ms;opacity:0}
 .reading-loupe.visible{opacity:1}.lens-symbol{position:absolute;right:-5px;bottom:-10px;width:29px;height:29px;color:#b84b2e}.reading-loupe .lens-symbol svg{width:29px;height:29px}.lens-label{font:10px/1.3 "Libre Franklin",Arial,sans-serif;color:#876c56;margin-bottom:5px;max-width:95%;text-align:center}.lens-copy{font:36px/1.1 Anton,Impact,sans-serif;text-align:center;color:#353c30}.lens-copy .kw{color:#e6a58a}.lens-copy .fun{color:#afc9dd}.lens-copy .num{color:#e6d69d}.lens-tip{position:absolute;width:12px;height:12px;background:inherit;border-top:2px solid #bd5738;border-left:2px solid #bd5738;top:-8px;left:calc(var(--tip-x,50%) - 6px);transform:rotate(45deg)}.reading-loupe.above .lens-tip{top:auto;bottom:-8px;transform:rotate(225deg)}
-.reading-loupe.code-lens{height:auto;min-height:86px;border-radius:22px;background:#262b27;padding:14px 19px}.code-lens .lens-label{color:#b8c2b0;font-family:ui-monospace,monospace}.code-lens .lens-copy{font:18px/1.5 ui-monospace,monospace;color:#fff8e9;white-space:normal;overflow-wrap:anywhere;text-align:left;width:100%}.reading-loupe.text-lens{height:auto;min-height:92px;border-radius:24px;padding:15px 21px}.text-lens .lens-copy{font:19px/1.35 "Libre Franklin",Arial,sans-serif;text-align:left}.guided-focus{opacity:1!important}.guided-focus.magnified-source{text-decoration:underline;text-decoration-color:#b96b4880;text-underline-offset:4px}
+.reading-loupe.code-lens{height:auto;min-height:86px;border-radius:22px;background:#262b27;padding:14px 19px}.code-lens .lens-label{color:#b8c2b0;font-family:ui-monospace,monospace}.code-lens .lens-copy{font:18px/1.5 ui-monospace,monospace;color:#fff8e9;white-space:normal;overflow-wrap:anywhere;text-align:left;width:100%}.reading-loupe.text-lens{height:auto;min-height:92px;border-radius:24px;padding:15px 21px}.text-lens .lens-copy{font:19px/1.35 "Libre Franklin",Arial,sans-serif;text-align:left}.guided-focus{opacity:1!important}.guided-focus.magnified-source{;text-underline-offset:4px}
 @media(prefers-reduced-motion:reduce){.reading-loupe{transition:opacity 100ms}}
 
 /* Enlarge in the document flow: adjacent lines move, never overlap. */
 .reading-loupe,.reading-loupe.code-lens,.reading-loupe.text-lens{position:absolute;left:auto!important;top:8px!important;right:10px;width:20px!important;height:20px!important;min-height:0;padding:0;border:0;border-radius:0;background:none;box-shadow:none;transform:none!important;filter:none;display:block;transition:opacity 300ms;pointer-events:none;color:#b84b2e;opacity:0}.reading-loupe.visible{opacity:1}.reading-loupe svg{width:20px;height:20px}
-.table td{transition:font-size 550ms,padding 550ms,background 550ms;line-height:1.4}.table tr.inplace-focus td{font-size:14px!important;padding:7px 6px;background:#f3dfc9!important;color:#533e2e!important}.table tr.inplace-focus td:last-child{font-size:18px!important;font-weight:700!important}.table tr.inplace-focus{opacity:1!important}
-.code-line{transition:font-size 550ms,padding 550ms,background 550ms;line-height:1.75}.code .code-line.inplace-focus{font-size:15px!important;line-height:1.55;padding-top:5px;padding-bottom:5px;background:#e4a58a15!important;white-space:pre-wrap!important;overflow-wrap:anywhere;color:#f6eddf!important}
-.total .value,.recap-box b,.intro-sum b{transition:font-size 550ms}.total.inplace-focus .value{font-size:39px!important;color:#b84b2e}.recap-box.inplace-focus b{font-size:33px!important}.intro-sum.inplace-focus b{font-size:35px!important}.big-statement.inplace-focus{font-size:28px!important}.chapter-callout.inplace-focus,.question.inplace-focus{font-size:12px!important;line-height:1.5}.inplace-focus{outline:0!important;box-shadow:none!important;text-decoration-color:inherit}
+.table td{transition:font-size 550ms,padding 550ms,background 550ms;line-height:1.4}.table tr.inplace-focus td{font-size:14px!important;padding:7px 6px;}.table tr.inplace-focus td:last-child{font-size:18px!important;font-weight:700!important}.table tr.inplace-focus{opacity:1!important}
+.code-line{transition:font-size 550ms,padding 550ms,background 550ms;line-height:1.75}.code .code-line.inplace-focus{font-size:15px!important;line-height:1.55;padding-top:5px;padding-bottom:5px;white-space:pre-wrap!important;overflow-wrap:anywhere;}
+.total .value,.recap-box b,.intro-sum b{transition:font-size 550ms}.total.inplace-focus .value{font-size:39px!important;}.recap-box.inplace-focus b{font-size:33px!important}.intro-sum.inplace-focus b{font-size:35px!important}.big-statement.inplace-focus{font-size:28px!important}.chapter-callout.inplace-focus,.question.inplace-focus{font-size:12px!important;line-height:1.5}.inplace-focus{outline:0!important;}
 @media(max-width:370px){.table tr.inplace-focus td{font-size:12px!important;padding:6px 5px}.table tr.inplace-focus td:last-child{font-size:16px!important}.code .code-line.inplace-focus{font-size:13px!important}.total.inplace-focus .value{font-size:32px!important}.recap-box.inplace-focus b{font-size:29px!important}.big-statement.inplace-focus{font-size:24px!important}}
 
 @media(max-width:850px){.content[data-scene="2"] .glass{padding:8px}.content[data-scene="2"] .table td{padding:4px 6px}.content[data-scene="2"] .table th{padding:6px}.content[data-scene="2"] .code{padding:8px}.content[data-scene="2"] .chapter-callout{padding-top:3px;padding-bottom:3px}}
@@ -148,7 +148,7 @@ body.video-mode{padding:0;background:#f7f5ef;display:block;overflow:hidden}.vide
 .video-mode .reference-table .table td{font-size:12px;line-height:1.2;padding:3px 6px!important}.video-mode .reference-table .table th{font-size:9px;padding:4px 6px!important}.video-mode .reference-table .table tr.inplace-focus td{font-size:14px!important;padding:4px 6px!important}.video-mode .reference-table .table tr.inplace-focus td:last-child{font-size:17px!important}.video-mode .query-card .code{font-size:12px}.video-mode .query-card .code-line.inplace-focus{font-size:16px!important}.video-mode .group-result .value{font-size:26px}.video-mode .group-result .total.inplace-focus .value{font-size:32px!important}
 
 /* A clearly visible enlargement, with room released by the explanatory subtitle. */
-.lesson-scene.focus-active .scene-desc{display:none}.reading-loupe,.reading-loupe svg{width:25px!important;height:25px!important}.reference-table .table tr.inplace-focus td,.video-mode .reference-table .table tr.inplace-focus td{font-size:20px!important;line-height:1.2;padding:5px 6px!important;background:#f1cf9f!important;color:#483120!important}.reference-table .table tr.inplace-focus td:last-child,.video-mode .reference-table .table tr.inplace-focus td:last-child{font-size:26px!important;font-weight:700!important}.query-card .code .code-line.inplace-focus,.video-mode .query-card .code-line.inplace-focus{font-size:22px!important;line-height:1.3;padding-top:6px;padding-bottom:6px;background:#e4a58a26!important;box-shadow:inset 3px 0 #e4a58a!important;white-space:pre-wrap!important}.group-result .total.inplace-focus .value,.video-mode .group-result .total.inplace-focus .value,.total.inplace-focus .value{font-size:42px!important;line-height:1.1;color:#ac4d2d!important}.recap-box.inplace-focus b{font-size:39px!important}.intro-sum.inplace-focus b{font-size:39px!important}.lesson-scene .big-statement.inplace-focus{font-size:29px!important}.chapter-callout.inplace-focus,.question.inplace-focus{font-size:16px!important;line-height:1.35}
+.lesson-scene.focus-active .scene-desc{display:none}.reading-loupe,.reading-loupe svg{width:25px!important;height:25px!important}.reference-table .table tr.inplace-focus td,.video-mode .reference-table .table tr.inplace-focus td{font-size:20px!important;line-height:1.2;padding:5px 6px!important;}.reference-table .table tr.inplace-focus td:last-child,.video-mode .reference-table .table tr.inplace-focus td:last-child{font-size:26px!important;font-weight:700!important}.query-card .code .code-line.inplace-focus,.video-mode .query-card .code-line.inplace-focus{font-size:22px!important;line-height:1.3;padding-top:6px;padding-bottom:6px;white-space:pre-wrap!important}.group-result .total.inplace-focus .value,.video-mode .group-result .total.inplace-focus .value,.total.inplace-focus .value{font-size:42px!important;line-height:1.1;}.recap-box.inplace-focus b{font-size:39px!important}.intro-sum.inplace-focus b{font-size:39px!important}.lesson-scene .big-statement.inplace-focus{font-size:29px!important}.chapter-callout.inplace-focus,.question.inplace-focus{font-size:16px!important;line-height:1.35}
 @media(max-width:370px){.reference-table .table tr.inplace-focus td{font-size:16px!important;padding:4px 5px!important}.reference-table .table tr.inplace-focus td:last-child{font-size:21px!important}.query-card .code .code-line.inplace-focus{font-size:18px!important;padding-top:5px;padding-bottom:5px}.group-result .total.inplace-focus .value,.total.inplace-focus .value{font-size:35px!important}.recap-box.inplace-focus b{font-size:35px!important}.intro-sum.inplace-focus b{font-size:35px!important}.lesson-scene .big-statement.inplace-focus{font-size:26px!important}.chapter-callout.inplace-focus,.question.inplace-focus{font-size:14px!important}}
 
 /* Small surface refinements; type and layout are preserved. */
@@ -199,10 +199,101 @@ body.exporting{display:flex;flex-direction:row;justify-content:center;align-item
 .content[data-scene="6"] .big-statement,.content[data-scene="6"] .question{width:95%;scale:1;transform-origin:left center;transition:scale 750ms cubic-bezier(.22,1,.36,1),background-color 750ms ease;will-change:scale}
 .content[data-scene="6"] .big-statement,.content[data-scene="6"] .big-statement.inplace-focus{font-size:20px!important;line-height:1.35}
 .content[data-scene="6"] .question,.content[data-scene="6"] .question.inplace-focus{font-size:12px!important;line-height:1.5}
-.content[data-scene="6"] .big-statement.inplace-focus,.content[data-scene="6"] .question.inplace-focus{scale:1.045;background-color:#edf0ed}
+.content[data-scene="6"] .big-statement.inplace-focus,.content[data-scene="6"] .question.inplace-focus{scale:1.045;}
 @media(prefers-reduced-motion:reduce){.content[data-scene="6"] .big-statement,.content[data-scene="6"] .question{transition:none;scale:1!important}}
 </style>
-</head>
+<style>
+/* Stable type sizes prevent focus cues from reflowing the lesson. */
+.tutorial-table-card .table td,.tutorial-table-card .table td,.video-mode .tutorial-table-card .table td,.video-mode .tutorial-table-card .table td,.tutorial-table-card .table tr.inplace-focus td,.video-mode .tutorial-table-card .table tr.inplace-focus td,.tutorial-table-card .table tr.inplace-focus td:last-child,.video-mode .tutorial-table-card .table tr.inplace-focus td:last-child{font-size:11px!important;font-weight:400!important;line-height:1.3!important;padding:3px 4px!important;transition:background-color 750ms ease,color 750ms ease!important}
+.tutorial-table-card .table th,.tutorial-table-card .table th{font-size:10px!important;line-height:1.3!important;padding:4px!important;font-weight:600!important;transition:background-color 750ms ease,color 750ms ease!important}
+.tutorial-table-card td.inplace-focus,.tutorial-table-card td.inplace-focus{font-weight:400!important}
+.query-card .code .code-line,.query-card .code .code-line.inplace-focus,.video-mode .query-card .code .code-line.inplace-focus{font-size:13px!important;line-height:1.45!important;padding-top:3px!important;padding-bottom:3px!important;width:92%;scale:1;transform-origin:left center;white-space:pre-wrap!important;transition:scale 850ms cubic-bezier(.22,1,.36,1),background-color 750ms ease,color 750ms ease!important}
+.query-card .code .code-line.inplace-focus,.video-mode .query-card .code .code-line.inplace-focus{scale:1.075}
+.chapter-callout,.chapter-callout.inplace-focus,.question,.question.inplace-focus{font-size:11px!important;line-height:1.5!important;width:97%;scale:1;transform-origin:left center;transition:scale 850ms cubic-bezier(.22,1,.36,1),background-color 750ms ease!important}
+.chapter-callout.inplace-focus,.question.inplace-focus{scale:1.025;}
+.recap-box b,.recap-box.inplace-focus b,.video-mode .recap-box.inplace-focus b{font-size:29px!important;line-height:1.2!important}
+.recap-box{scale:1;transform-origin:center;transition:scale 850ms cubic-bezier(.22,1,.36,1),background-color 750ms ease!important}.recap-box.inplace-focus{scale:1.025;}
+.tutorial-table-card,.tutorial-table-card{width:94%;margin-block:5px;scale:1;transform-origin:left center;transition:scale 950ms cubic-bezier(.22,1,.36,1),background-color 750ms ease!important}
+.tutorial-table-card.table-emphasis,.tutorial-table-card.table-emphasis{scale:1.055}
+#narrationPointer{position:absolute;left:0;top:0;width:14px;height:19px;z-index:9;pointer-events:none;opacity:0;transform-origin:0 0;color:#365e85;filter:drop-shadow(0 1px 1px #ffffff80)}
+#narrationPointer svg{display:block;width:100%;height:100%}
+.persistent-header .title span,.code .kw,.select-concept b,.from-concept b{border-radius:3px;transition:background-color 450ms ease,color 450ms ease}
+.persistent-header .title span.is-speaking,.code .kw.is-speaking,.select-concept b.is-speaking,.from-concept b.is-speaking{;}
+@media(prefers-reduced-motion:reduce){.tutorial-table-card,.tutorial-table-card,.query-card .code .code-line,.recap-box{transition:none!important;scale:1!important}}
+</style><style>
+.stage .tutorial-table-card .table tr.inplace-focus td,.stage .tutorial-table-card .table tr.inplace-focus td:last-child{font-size:11px!important;font-weight:400!important;line-height:1.3!important;padding:3px 4px!important}
+</style><style>
+/* Temporary tutorial enlargement. Original colors remain unchanged. */
+.stage .tutorial-table-card,.stage .tutorial-table-card{width:90%;scale:1!important;transition:scale 1000ms cubic-bezier(.45,0,.2,1)!important}
+.stage .query-card .code .code-line,.stage .query-card .code .code-line.inplace-focus{width:88%;scale:1!important;transition:scale 1000ms cubic-bezier(.45,0,.2,1)!important}
+.stage .recap-box,.stage .recap-box.inplace-focus{width:94%;scale:1!important;transition:scale 1000ms cubic-bezier(.45,0,.2,1)!important}
+.stage .chapter-callout,.stage .chapter-callout.inplace-focus,.stage .question,.stage .question.inplace-focus{scale:1!important;transition:scale 1000ms cubic-bezier(.45,0,.2,1)!important}
+.stage .table tr,.stage .table thead,.stage .table tbody,.stage .tutorial-value{scale:1;transform-origin:left center;transition:scale 1000ms cubic-bezier(.45,0,.2,1)!important}
+.tutorial-value{display:inline-block}
+.stage .tutorial-table-card.tutorial-enlarged,.stage .tutorial-table-card.tutorial-enlarged,.stage .table tr.tutorial-enlarged,.stage .table thead.tutorial-enlarged,.stage .table tbody.tutorial-enlarged{scale:1.10!important}
+.stage .query-card .code .code-line.tutorial-enlarged{scale:1.12!important}
+.stage .tutorial-value.tutorial-enlarged{scale:1.20!important}
+.stage .recap-box.tutorial-enlarged{scale:1.06!important}
+.stage .question.tutorial-enlarged,.stage .chapter-callout.tutorial-enlarged{scale:1.04!important}
+@media(prefers-reduced-motion:reduce){.stage .tutorial-enlarged{scale:1!important;transition:none!important}}
+</style><style>
+/* SQL lines may combine temporary enlargement and a restrained highlight. */
+.stage .query-card .code .code-line{background-color:transparent!important;transition:scale 1000ms cubic-bezier(.45,0,.2,1),background-color 1000ms ease!important}
+.stage .query-card .code .code-line.tutorial-enlarged{background-color:#73777b66!important}
+</style><style>
+/* Emphasize narrated lesson content; the persistent header never participates. */
+.stage .tutorial-table-card,.stage .tutorial-table-card,.stage .recap-box,.stage .question,.stage .chapter-callout{transition:scale 1000ms cubic-bezier(.45,0,.2,1),background-color 1000ms ease!important}
+.stage .tutorial-table-card.tutorial-enlarged,.stage .tutorial-table-card.tutorial-enlarged,.stage .question.tutorial-enlarged,.stage .chapter-callout.tutorial-enlarged{}
+.stage .table tr td,.stage .table thead th,.stage .table tbody td{transition:background-color 1000ms ease,color 1000ms ease!important}
+.stage .table tr.tutorial-enlarged td,.stage .table thead.tutorial-enlarged th,.stage .table tbody.tutorial-enlarged td{background-color:#dde0de!important}
+.stage .tutorial-value{border-radius:2px;transition:scale 1000ms cubic-bezier(.45,0,.2,1),background-color 1000ms ease!important}
+
+</style><style>
+/* A continuous vertical strip identifies the selected column; values scale above it. */
+.stage .table th.tutorial-column-band,.stage .table td.tutorial-column-band{background-color:#dde0de!important}
+.stage .tutorial-value,.stage .tutorial-value.tutorial-enlarged{background-color:transparent!important}
+</style><style>
+/* Stronger tutorial enlargement, with space reserved for the expanded object. */
+.stage .tutorial-table-card,.stage .tutorial-table-card{width:85%;margin-block:12px}
+.stage .query-card .code .code-line,.stage .query-card .code .code-line.inplace-focus{width:84%}
+.stage .tutorial-table-card.tutorial-enlarged,.stage .tutorial-table-card.tutorial-enlarged,.stage .table tr.tutorial-enlarged,.stage .table thead.tutorial-enlarged,.stage .table tbody.tutorial-enlarged{scale:1.16!important}
+.stage .query-card .code .code-line.tutorial-enlarged{scale:1.18!important}
+.stage .tutorial-value.tutorial-enlarged{scale:1.28!important}
+/* A header row is blue; data rows and complete vertical bands are pale yellow. */
+.stage .table thead.tutorial-enlarged th{background-color:#dceef8!important}
+.stage .table tr.tutorial-enlarged td,.stage .table tbody.tutorial-enlarged td{background-color:#fff0bc!important}
+.stage .table th.tutorial-column-band,.stage .table td.tutorial-column-band{background-color:#fff0bc!important}
+</style><style>
+/* Semantic cards and group arithmetic retain their original colors and stable size. */
+.stage.lesson-scene.focus-active .scene-desc{display:block!important}
+.stage .recap-box .table,.stage .having-result-table .table{width:85%;table-layout:fixed}
+.stage .table td{font-size:11px!important;font-weight:400!important;line-height:1.3!important;padding:3px 4px!important}
+.stage .table th{font-size:10px!important;font-weight:600!important;line-height:1.3!important;padding:4px!important}
+.stage .table tr.inplace-focus td,.stage .table tr.inplace-focus td:last-child{font-size:11px!important;font-weight:400!important;line-height:1.3!important;padding:3px 4px!important}
+.stage .total .value,.stage .total.inplace-focus .value{font-size:24px!important;line-height:1.2!important}
+.stage .group-result .group-formula,.stage .group-result .total.inplace-focus .group-formula{display:block!important;font-size:8px!important;line-height:1.2!important;margin:3px 0!important}
+.stage .intro-sum b,.stage .intro-sum.inplace-focus b{font-size:30px!important;line-height:1.2!important}
+.stage .big-statement,.stage .big-statement.inplace-focus{font-size:20px!important;line-height:1.35!important;width:92%;scale:1!important;transform-origin:left center;transition:scale 1000ms cubic-bezier(.45,0,.2,1)!important}
+.stage .intro-sum,.stage .group-result .total{scale:1!important;transform-origin:left center;transition:scale 1000ms cubic-bezier(.45,0,.2,1),background-color 1000ms ease,opacity 650ms ease!important}
+.stage .group-result .total{width:88%}
+.stage .big-statement.tutorial-enlarged,.stage .intro-sum.tutorial-enlarged{scale:1.08!important}
+.stage .group-result .total.tutorial-enlarged{scale:1.12!important;background-color:#fff0bc!important}
+.stage .table tr{transition:scale 1000ms cubic-bezier(.45,0,.2,1),opacity 650ms ease!important}
+/* Pass/fail evaluation remains visible without recoloring the letters. */
+.stage .content[data-scene="2"] .table tr.row-pass td{background:transparent;color:inherit}
+/***** Both result states occupy one reserved area, preventing layout jumps. *****/
+.stage .group-result{position:relative;min-height:104px}
+.stage .group-result>.totals{display:grid!important;opacity:1;visibility:visible;transition:opacity 650ms ease,visibility 0s linear 0s}
+.stage .group-result>.result-summary-label{opacity:1;visibility:visible;transition:opacity 650ms ease,visibility 0s linear 0s}
+.stage .group-result>.having-result-table{display:block!important;position:absolute;inset:8px;opacity:0;visibility:hidden;animation:none!important;transition:opacity 650ms ease,visibility 0s linear 650ms}
+.stage .having-result-ready .group-result>.totals,.stage .having-result-ready .group-result>.result-summary-label{opacity:0;visibility:hidden;transition-delay:0s,650ms}
+.stage .having-result-ready .group-result>.having-result-table{opacity:1;visibility:visible;transition-delay:0s,0s}
+@media(prefers-reduced-motion:reduce){.stage .tutorial-enlarged{scale:1!important;transition:none!important}}
+</style><style>
+/* Stable metrics throughout evaluation, including nested HAVING output tables. */
+#content .table td,#content .table tr.inplace-focus td,#content .table tr.inplace-focus td:last-child{font-size:11px!important;line-height:1.3!important;padding:3px 4px!important;font-weight:400!important;color:#32382d!important}
+#content .total .value,#content .total.inplace-focus .value{font-size:24px!important;line-height:1.2!important}
+</style></head>
 <body>
 <div class="mobile-top">VISTA PREVIA · 9:16</div>
 <div class="stage-frame">
@@ -241,7 +332,9 @@ body.exporting{display:flex;flex-direction:row;justify-content:center;align-item
   </section>
   <div class="step-list" id="stepList"></div>
   <label class="option"><input type="checkbox" id="captions" /> Mostrar subtítulos cortos</label>
-  <label class="option"><input type="checkbox" id="slowZoom" checked /> Ampliar la línea que se explica</label>
+  <label class="option"><input type="checkbox" id="slowZoom" checked /> Ampliar la parte que se explica</label>
+  <label class="option"><input id="teachingPointer" type="checkbox" checked /> Puntero de explicación</label>
+  <label class="option"><input id="pointerClick" type="checkbox" checked /> Clic suave al señalar</label>
   <label class="option" for="voiceFile">Cambiar narración (opcional)</label>
   <input id="voiceFile" type="file" accept="audio/*" style="width:100%;margin-top:8px;font-size:11px" />
   <button id="restoreVoice" class="btn audio-restore" disabled>Restaurar audio original · voz A</button>
@@ -2205,15 +2298,16 @@ const voiceAudio=el('voiceAudio');const originalVoiceSrc=voiceAudio.getAttribute
 const voiceReady=()=>Number.isFinite(voiceAudio.duration)&&voiceAudio.duration>0;
 const format=s=>`${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;
 
+const sceneFadeMs=320;
 function render(i,fromAudio=false){
  if(fromAudio && playing && i!==index && !matchMedia('(prefers-reduced-motion: reduce)').matches){
   if(transitionTarget===i)return;
   clearTimeout(transitionTimer);transitionTarget=i;
-  [el('sceneHead'),el('sceneDesc'),el('content')].forEach(node=>node.animate([{opacity:1},{opacity:0}],{duration:220,easing:'ease-in',fill:'forwards'}));
+  [el('sceneHead'),el('sceneDesc'),el('content')].forEach(node=>node.animate([{opacity:1},{opacity:0}],{duration:sceneFadeMs,easing:'ease-in-out',fill:'forwards'}));
   transitionTimer=setTimeout(()=>{
    [el('sceneHead'),el('sceneDesc'),el('content')].forEach(node=>node.getAnimations().forEach(a=>a.cancel()));
    transitionTarget=null;drawScene(i,true);
-  },220);return;
+  },sceneFadeMs);return;
  }
  clearTimeout(transitionTimer);transitionTarget=null;
  el('content').getAnimations().forEach(a=>a.cancel());
@@ -2224,22 +2318,22 @@ function drawScene(i,fromAudio=false){hideLens();index=(i+parts.length)%parts.le
 function pause(){if(transitionTimer){clearTimeout(transitionTimer);transitionTimer=null;transitionTarget=null;[el('sceneHead'),el('sceneDesc'),el('content')].forEach(node=>node.getAnimations().forEach(a=>a.cancel()))}voiceAudio.pause();playing=false;el('stage').classList.remove('playing');clearTimeout(timer);timer=null;el('play').textContent='▶ Reproducir'}
 function next(){render(index+1);if(playing){schedule()}}
 function schedule(){clearTimeout(timer);if(voiceReady())return;startProgress();timer=setTimeout(()=>{if(index===parts.length-1){pause();return}next()},times[index]*1000)}
-function toggle(){if(playing){pause()}else{playing=true;el('play').textContent='Ⅱ Pausar';if(voiceReady()){if(exportAudioContext&&exportAudioContext.state==='suspended')exportAudioContext.resume();if(voiceAudio.ended){render(0)}voiceAudio.play().catch(()=>{pause();el('voiceStatus').textContent='No se pudo reproducir el audio. Vuelve a pulsar Reproducir.'})}schedule()}}
+function toggle(){prepareTeachingAudio();if(playing){pause()}else{playing=true;el('play').textContent='Ⅱ Pausar';if(voiceReady()){if(exportAudioContext&&exportAudioContext.state==='suspended')exportAudioContext.resume();if(voiceAudio.ended){render(0)}voiceAudio.play().catch(()=>{pause();el('voiceStatus').textContent='No se pudo reproducir el audio. Vuelve a pulsar Reproducir.'})}schedule()}}
 
 let motion=[];let transitionTimer=null;let transitionTarget=null;
 function animateScene(){
  motion.forEach(a=>a.cancel());motion=[];
  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
  const run=(node,frames,options)=>{if(node)motion.push(node.animate(frames,{fill:'both',...options}));};
- ['sceneHead','sceneDesc'].forEach((id,i)=>run(el(id),[{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],{duration:850,delay:80+i*160,easing:'cubic-bezier(.16,1,.3,1)'}));
- el('content').querySelectorAll(':scope > *').forEach((node,i)=>run(node,[{opacity:0,transform:'translateY(10px)'},{opacity:1,transform:'translateY(0)'}],{duration:900,delay:180+i*200,easing:'cubic-bezier(.16,1,.3,1)'}));
+ ['sceneHead','sceneDesc'].forEach((id,i)=>run(el(id),[{opacity:0,transform:'translateY(5px)'},{opacity:1,transform:'translateY(0)'}],{duration:750,delay:60+i*90,easing:'cubic-bezier(.16,1,.3,1)'}));
+ el('content').querySelectorAll(':scope > *').forEach((node,i)=>run(node,[{opacity:0,transform:'translateY(6px)'},{opacity:1,transform:'translateY(0)'}],{duration:750,delay:120+i*90,easing:'cubic-bezier(.16,1,.3,1)'}));
  el('content').querySelectorAll('tbody tr').forEach((node,i)=>{
  const dim=node.matches('.fade-row,.expired-row');
- run(node,[{opacity:0,transform:'translateX(-6px)'},{opacity:1,transform:'translateX(0)'}],{duration:650,delay:600+i*140,easing:'ease-out',fill:'backwards'});
+ run(node,[{opacity:0,transform:'translateX(-6px)'},{opacity:1,transform:'translateX(0)'}],{duration:650,delay:260+i*65,easing:'ease-out',fill:'backwards'});
  });
  el('content').querySelectorAll('.total').forEach((node,i)=>run(node,[{opacity:0,transform:'translateY(8px) scale(.98)'},{opacity:1,transform:'translateY(0) scale(1)'}],{duration:550,delay:750+i*200,easing:'cubic-bezier(.16,1,.3,1)',fill:'backwards'}));
  el('content').querySelectorAll('.receipt').forEach((node,i)=>run(node,[{opacity:0,transform:'translateY(12px) rotate(0deg)'},{opacity:1,transform:'translateY(0) rotate('+(i?2:-2)+'deg)'}],{duration:900,delay:700+i*200,easing:'cubic-bezier(.16,1,.3,1)'}));
- el('content').querySelectorAll('.intro-sum').forEach(node=>run(node,[{opacity:0,transform:'translateY(10px)'},{opacity:1,transform:'translateY(0)'}],{duration:800,delay:1350,easing:'ease-out'}));
+ el('content').querySelectorAll('.intro-sum').forEach(node=>run(node,[{opacity:0,transform:'translateY(6px)'},{opacity:1,transform:'translateY(0)'}],{duration:800,delay:1350,easing:'ease-out'}));
 }
 function startProgress(){
  const stage=el('stage');stage.classList.remove('playing');
@@ -2253,7 +2347,7 @@ let fitFrame=null,fitting=false,fitCache=null;
 function requestFit(){cancelAnimationFrame(fitFrame);fitFrame=requestAnimationFrame(fitLesson)}
 function fitLesson(){
  const viewport=el('lessonBodyFrame'),layout=el('lessonLayout');if(!viewport||!layout||fitting)return;
- const width=viewport.clientWidth,height=viewport.clientHeight;if(!width||!height)return;
+ const width=viewport.clientWidth,height=Math.max(1,viewport.clientHeight-2);if(!width||!height)return;
  const key=[width,height,layout.offsetWidth,layout.offsetHeight,index,lastGuide].join('|');if(fitCache===key)return;fitting=true;layout.style.width=width+'px';let scale=1;
  if(layout.offsetHeight>height){
   let low=.35,high=1;
@@ -2293,6 +2387,7 @@ function syncEvaluation(local){
 }
 function guideScene(local){
  const viewport=el('viewport');let chosen=-1;syncEvaluation(local);el('content').classList.toggle('having-result-ready',index===4&&local>=filterTimes.resultTableShown);el('content').classList.toggle('filter-applied',index===2&&local>=filterTimes.whereRemoved);el('content').classList.toggle('having-filter-applied',index===4&&local>=filterTimes.havingRemoved);
+ updateTableEmphasis(local);
  guides[index].forEach((cue,i)=>{if(local>=cue[0])chosen=i});
  const key=index+':'+chosen+':'+el('slowZoom').checked;if(key===lastGuide)return;lastGuide=key;
  el('content').querySelectorAll('.inplace-focus,.guided-focus').forEach(n=>n.classList.remove('inplace-focus','guided-focus','magnified-source'));
@@ -2328,13 +2423,105 @@ function syncNarration(){
  if(index!==target)render(target,true);else guideScene(elapsed-times.slice(0,index).reduce((a,b)=>a+b,0));
  el('progress').style.width=Math.min(100,elapsed/totalTime*100)+'%';
 }
-function followAudio(){cancelAnimationFrame(playbackFrame);const frame=()=>{syncNarration();if(!voiceAudio.paused&&!voiceAudio.ended)playbackFrame=requestAnimationFrame(frame)};frame()}
+function followAudio(){cancelAnimationFrame(playbackFrame);const frame=()=>{syncNarration();updateTeachingPointer(narrationTime());followTeachingClicks();if(!voiceAudio.paused&&!voiceAudio.ended)playbackFrame=requestAnimationFrame(frame)};frame()}
 voiceAudio.addEventListener('play',followAudio);
 voiceAudio.addEventListener('pause',()=>cancelAnimationFrame(playbackFrame));
-voiceAudio.addEventListener('seeked',syncNarration);
+voiceAudio.addEventListener('seeked',()=>{syncNarration();updateTeachingPointer(narrationTime());teachingLastTime=voiceAudio.currentTime});
 voiceAudio.ontimeupdate=syncNarration;
 
 voiceAudio.onended=()=>{pause();if(index!==parts.length-1)render(parts.length-1,true);motion.forEach(a=>{try{a.finish()}catch{}});guideScene(times[index]);fitLesson();el('progress').style.width='100%';};
+
+// One media clock drives the live pointer, click cues and offline export.
+const teachingPointer=document.createElement('div');teachingPointer.id='narrationPointer';teachingPointer.setAttribute('aria-hidden','true');
+teachingPointer.innerHTML='<svg viewBox="0 0 18 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 8H9V3L17 12L9 21V16H2Z" fill="#365e85" stroke="#fffdf7" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+el('stage').append(teachingPointer);
+let teachingPoint=null,teachingAudio=null,teachingLastTime=-1;
+const teachingMove=.95;
+function teachingEase(t){t=Math.max(0,Math.min(1,t));return t*t*t*(t*(t*6-15)+10)}
+function teachingCue(local){let cue=-1;guides[index].forEach((g,i)=>{if(local>=g[0])cue=i});return cue}
+function teachingTargets(selector){
+ if(!selector)return[];
+ const nodes=[...el('content').querySelectorAll(selector)].map(n=>n.closest('.code-line')||(n.matches('.intro-example')?n.querySelector('.intro-sum'):n));
+ return [...new Set(nodes)].filter(n=>!nodes.some(other=>other!==n&&other.contains(n))&&n.getBoundingClientRect().width>0&&getComputedStyle(n).visibility!=='hidden'&&(!n.closest('[aria-hidden="true"]')));
+}
+function updateTableEmphasis(local){
+ // Scale only the narrated object, then let it return without changing layout.
+ const content=el('content');
+ content.querySelectorAll(':scope > .reference-table,:scope > .filtered-result,:scope > .comparison-first,:scope > .comparison-second,:scope > .zoom-target').forEach(n=>n.classList.add('tutorial-table-card'));
+ content.querySelectorAll('.table th,.table td').forEach(cell=>{
+  if(!cell.querySelector(':scope > .tutorial-value')){
+   const value=document.createElement('span');value.className='tutorial-value';while(cell.firstChild)value.append(cell.firstChild);cell.append(value);
+   value.style.transformOrigin=getComputedStyle(cell).textAlign==='right'?'right center':'left center';
+  }
+ });
+ const cue=teachingCue(local),age=cue<0?0:local-guides[index][cue][0];
+ const rawTargets=cue<0||age>=4.2||!el('slowZoom').checked?[]:teachingTargets(guides[index][cue][1]);
+ // Paint the column itself, behind its values, rather than individual words.
+ const columnCells=new Set(rawTargets.filter(n=>n.matches('td,th')).flatMap(n=>[...n.closest('table').rows].map(row=>row.cells[n.cellIndex]).filter(Boolean)));
+ const targets=[...new Set([...rawTargets.filter(n=>!n.matches('td,th')),...columnCells])];
+ content.querySelectorAll('.table td,.table th').forEach(cell=>cell.classList.toggle('tutorial-column-band',columnCells.has(cell)));
+ const enlarged=new Set(targets.map(n=>n.matches('td,th')?n.querySelector('.tutorial-value'):n).filter(Boolean));
+ content.querySelectorAll('.tutorial-enlarged').forEach(n=>{if(!enlarged.has(n))n.classList.remove('tutorial-enlarged')});
+ enlarged.forEach(n=>n.classList.add('tutorial-enlarged'));
+ content.querySelectorAll('.table-emphasis').forEach(n=>n.classList.remove('table-emphasis'));
+}
+function teachingAnchor(selector){
+ let nodes=teachingTargets(selector);if(!nodes.length)return null;const groups=nodes.filter(n=>n.matches('.total'));if(groups.length)nodes=groups;
+ const stage=el('stage'),r=stage.getBoundingClientRect(),sx=r.width/stage.offsetWidth,sy=r.height/stage.offsetHeight;
+ const rects=nodes.map(n=>n.getBoundingClientRect()),rails=nodes.map(n=>(n.closest('.tutorial-table-card,.having-result-table')||n).getBoundingClientRect()),left=Math.min(...rails.map(r=>r.left)),top=Math.min(...rects.map(r=>r.top)),bottom=Math.max(...rects.map(r=>r.bottom));
+ const broad=nodes.length===1&&!nodes[0].matches('tr,td,th,.code-line,.sql-paren');
+ // The tip rests in the margin, never over a value or SQL character.
+ return{x:Math.max(3,(left-r.left)/sx-stage.clientLeft-17),y:(top-r.top)/sy-stage.clientTop+(broad?9:((bottom-top)/sy)/2)-9.5};
+}
+function updateTeachingPointer(elapsed){
+ const start=times.slice(0,index).reduce((a,b)=>a+b,0),local=elapsed-start,cue=teachingCue(local),list=guides[index];
+ let point=null;
+ if(el('teachingPointer').checked&&cue>=0&&local>=0&&local<times[index]){
+  const selected=list[cue],dest=teachingAnchor(selected[1]),previous=cue>0?teachingAnchor(list[cue-1][1]):null;
+  const age=Math.max(0,local-Math.max(selected[0],index?sceneFadeMs/1000:0)),t=teachingEase(age/teachingMove);
+  if(dest){const from=previous||dest;point={x:from.x+(dest.x-from.x)*t,y:from.y+(dest.y-from.y)*t,opacity:previous?1:teachingEase(age/.45)};}
+  else if(previous){point={...previous,opacity:1-teachingEase((local-selected[0])/.4)}}
+  if(point)point.opacity*=teachingEase(Math.max(0,times[index]-local)/.32);
+ }
+ teachingPoint=point;teachingPointer.style.opacity=point?point.opacity:0;
+ if(point)teachingPointer.style.transform=`translate(${point.x}px,${point.y}px)`;
+ return point;
+}
+function drawTeachingPointer(ctx,profile){
+ const p=teachingPoint;if(!p||p.opacity<=0)return;
+ ctx.save();ctx.scale(profile.width/el('stage').clientWidth,profile.height/el('stage').clientHeight);ctx.translate(p.x,p.y);ctx.scale(14/18,19/24);ctx.globalAlpha=p.opacity;
+ ctx.beginPath();ctx.moveTo(2,8);ctx.lineTo(9,8);ctx.lineTo(9,3);ctx.lineTo(17,12);ctx.lineTo(9,21);ctx.lineTo(9,16);ctx.lineTo(2,16);ctx.closePath();ctx.fillStyle='#365e85';ctx.fill();ctx.strokeStyle='#fffdf7';ctx.lineWidth=1.6;ctx.lineJoin='round';ctx.stroke();ctx.restore();
+}
+function teachingClickTimes(duration){
+ if(!el('teachingPointer').checked||!el('pointerClick').checked)return[];
+ const factor=voiceURL?duration/totalTime:1,out=[];let start=0;
+ guides.forEach((list,scene)=>{list.forEach((cue,i)=>{
+  const at=(start+Math.max(cue[0],scene?sceneFadeMs/1000:0))*factor+teachingMove+.08;
+  const next=(start+(list[i+1]?.[0]??times[scene]))*factor;
+  if(cue[1]&&at<duration&&at<next-.15&&(!out.length||at-out[out.length-1]>=4.5))out.push(at);
+ });start+=times[scene]});return out;
+}
+function teachingClickSample(i,rate){const t=i/rate;if(t>=.045)return 0;const env=Math.min(1,t/.0012)*Math.exp(-t*160);return .026*env*(Math.sin(2*Math.PI*1450*t)+.3*Math.sin(2*Math.PI*2650*t));}
+function prepareTeachingAudio(){
+ if(!el('pointerClick').checked)return;
+ try{teachingAudio ||= new AudioContext();if(teachingAudio.state==='suspended')teachingAudio.resume().catch(()=>{});}catch{}
+}
+function followTeachingClicks(){
+ const now=voiceAudio.currentTime,previous=teachingLastTime;teachingLastTime=now;
+ if(voiceAudio.paused||previous<0||now<previous||now-previous>.3||!teachingAudio||teachingAudio.state!=='running')return;
+ if(!teachingClickTimes(voiceAudio.duration).some(t=>t>previous&&t<=now))return;
+ const buffer=teachingAudio.createBuffer(1,Math.ceil(.045*teachingAudio.sampleRate),teachingAudio.sampleRate),data=buffer.getChannelData(0);
+ for(let i=0;i<data.length;i++)data[i]=teachingClickSample(i,buffer.sampleRate);
+ const sound=teachingAudio.createBufferSource();sound.buffer=buffer;sound.connect(teachingAudio.destination);sound.start();
+}
+function mixTeachingClicks(audio){
+ const cues=teachingClickTimes(audio.duration),count=Math.ceil(audio.sampleRate*.045);
+ for(let channel=0;channel<audio.numberOfChannels;channel++){const data=audio.getChannelData(channel);for(const cue of cues){const at=Math.round(cue*audio.sampleRate);for(let i=0;i<count&&at+i<data.length;i++)data[at+i]=Math.max(-1,Math.min(1,data[at+i]+teachingClickSample(i,audio.sampleRate)));}}
+}
+el('teachingPointer').onchange=()=>updateTeachingPointer(narrationTime());
+el('pointerClick').onchange=()=>{if(el('pointerClick').checked)prepareTeachingAudio()};
+voiceAudio.addEventListener('pause',()=>{teachingLastTime=-1});
+
 
 const lessonObserver=new ResizeObserver(requestFit);lessonObserver.observe(el('lessonLayout'));lessonObserver.observe(el('viewport'));lessonObserver.observe(el('lessonBodyFrame'));
 if(window.visualViewport)window.visualViewport.addEventListener('resize',sizeVideo);
@@ -2392,6 +2579,7 @@ async function paintNativeFrame(session){
  for(const [value,name]of assets)clone.style.setProperty(name,value);
  Object.assign(clone.style,{position:'relative',left:'0',top:'0',transform:'none',width:'430px',height:(430*16/9)+'px',border:'0',borderRadius:'0',boxShadow:'none',margin:'0'});
  // The progress bar is painted separately so static slides need no repeated rasterization.
+ clone.querySelector('#narrationPointer')?.remove();
  clone.querySelector('#progress').style.width='0px';
  const serialized=new XMLSerializer().serializeToString(clone);
  const svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+session.profile.width+'" height="'+session.profile.height+'" viewBox="0 0 430 '+(430*16/9)+'"><foreignObject width="430" height="'+(430*16/9)+'"><div xmlns="http://www.w3.org/1999/xhtml"><style>'+session.fonts+'</style>'+serialized+'</div></foreignObject></svg>';
@@ -2425,7 +2613,7 @@ async function startExport(){
   let videoConfig;for(const hardwareAcceleration of ['prefer-hardware','prefer-software']){const config={codec:profile.fps>30?'avc1.4d002a':'avc1.4d0029',width:profile.width,height:profile.height,framerate:profile.fps,bitrate:profile.bitrate,latencyMode:'quality',hardwareAcceleration,avc:{format:'avc'}};if((await VideoEncoder.isConfigSupported(config)).supported){videoConfig=config;break}}
   if(!videoConfig)throw new Error('Este navegador no permite codificar H.264 a esta resolución. Prueba el modo Ligero o actualiza Chrome o Edge.');
   const bytes=await(await fetch(voiceAudio.currentSrc||voiceAudio.src)).arrayBuffer();checkExport(session);
-  const audioContext=new OfflineAudioContext(1,1,48000);const decoded=await audioContext.decodeAudioData(bytes);const channels=Math.min(2,decoded.numberOfChannels),resampler=new OfflineAudioContext(channels,Math.ceil(decoded.duration*48000),48000),audioSource=resampler.createBufferSource();audioSource.buffer=decoded;audioSource.connect(resampler.destination);audioSource.start();const audio=await resampler.startRendering();checkExport(session);
+  const audioContext=new OfflineAudioContext(1,1,48000);const decoded=await audioContext.decodeAudioData(bytes);const channels=Math.min(2,decoded.numberOfChannels),resampler=new OfflineAudioContext(channels,Math.ceil(decoded.duration*48000),48000),audioSource=resampler.createBufferSource();audioSource.buffer=decoded;audioSource.connect(resampler.destination);audioSource.start();const audio=await resampler.startRendering();mixTeachingClicks(audio);checkExport(session);
   let audioCodec;for(const codec of ['mp4a.40.2','opus'])if((await AudioEncoder.isConfigSupported({codec,sampleRate:audio.sampleRate,numberOfChannels:channels,bitrate:160000})).supported){audioCodec=codec;break}
   if(!audioCodec)throw new Error('Este navegador no permite codificar el audio. Usa Chrome o Edge actualizado.');
   const target=new Mp4Muxer.ArrayBufferTarget(),muxer=new Mp4Muxer.Muxer({target,video:{codec:'avc',width:profile.width,height:profile.height,frameRate:profile.fps},audio:{codec:audioCodec==='opus'?'opus':'aac',sampleRate:audio.sampleRate,numberOfChannels:channels},fastStart:'in-memory',firstTimestampBehavior:'strict'});
@@ -2444,15 +2632,16 @@ async function startExport(){
    checkExport(session);const time=frame/profile.fps,elapsed=voiceURL?Math.min(time,audio.duration)/audio.duration*totalTime:Math.min(time,audio.duration),milliseconds=time*1000;
    const activeBefore=exportAnimations(session,milliseconds);let end=0,targetScene=parts.length-1;
    for(let i=0;i<times.length;i++){end+=times[i];if(elapsed<end-.001){targetScene=i;break}}
-   // Preserve the 220 ms fade between scenes without wall-clock timers.
-   if(targetScene!==index&&!pendingScene){pendingScene={scene:targetScene,at:milliseconds};for(const id of ['sceneHead','sceneDesc','content'])el(id).animate([{opacity:1},{opacity:0}],{duration:220,easing:'ease-in',fill:'forwards'})}
-   if(pendingScene&&milliseconds-pendingScene.at>=220){for(const id of ['sceneHead','sceneDesc','content'])el(id).getAnimations().forEach(a=>a.cancel());drawScene(pendingScene.scene,true);pendingScene=null}
+   // Match the playback fade clock without wall-clock timers.
+   if(targetScene!==index&&!pendingScene){pendingScene={scene:targetScene,at:milliseconds};for(const id of ['sceneHead','sceneDesc','content'])el(id).animate([{opacity:1},{opacity:0}],{duration:sceneFadeMs,easing:'ease-in-out',fill:'forwards'})}
+   if(pendingScene&&milliseconds-pendingScene.at>=sceneFadeMs){for(const id of ['sceneHead','sceneDesc','content'])el(id).getAnimations().forEach(a=>a.cancel());drawScene(pendingScene.scene,true);pendingScene=null}
    const local=elapsed-times.slice(0,index).reduce((a,b)=>a+b,0);guideScene(local);fitLesson();
    // Reading styles creates CSS transitions, then their clocks are paused as well.
    void el('content').offsetHeight;const activeAfter=exportAnimations(session,milliseconds);
    const state=index+'|'+lastGuide+'|'+rowChecks.filter(c=>local>=c.at).length+'|'+groupChecks.filter(c=>local>=c.at).length+'|'+[filterTimes.whereRemoved,filterTimes.havingRemoved,filterTimes.resultTableShown].map(t=>local>=t).join('|');
    if(frame===0||activeBefore||activeAfter||wasActive||state!==previousState)await paintNativeFrame(session);
    context.drawImage(session.base,0,0);const bar=session.bar;context.fillStyle=bar.color;context.fillRect(bar.x,bar.y,bar.width*Math.min(1,elapsed/totalTime),bar.height);
+   updateTeachingPointer(elapsed);drawTeachingPointer(context,profile);
    const timestamp=Math.round(frame*1e6/profile.fps),nextTimestamp=Math.round((frame+1)*1e6/profile.fps),videoFrame=new VideoFrame(canvas,{timestamp,duration:nextTimestamp-timestamp});
    try{encoder.encode(videoFrame,{keyFrame:frame%(profile.fps*2)===0})}finally{videoFrame.close()}
    if(encoder.encodeQueueSize>6)await encoder.flush();
