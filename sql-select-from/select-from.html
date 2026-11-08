@@ -215,7 +215,27 @@ body.exporting{display:flex;flex-direction:row;justify-content:center;align-item
 .select-result .table th:only-child,.select-result .table td:only-child{text-align:left}
 .select-result{transition:background-color 650ms ease}.select-result.inplace-focus{background:#f3e7d7}
 </style>
-</head>
+<style>
+/* Stable type sizes prevent focus cues from reflowing the lesson. */
+.select-source .table td,.select-result .table td,.video-mode .select-source .table td,.video-mode .select-result .table td,.select-source .table tr.inplace-focus td,.video-mode .select-source .table tr.inplace-focus td,.select-source .table tr.inplace-focus td:last-child,.video-mode .select-source .table tr.inplace-focus td:last-child{font-size:11px!important;font-weight:400!important;line-height:1.3!important;padding:3px 4px!important;transition:background-color 750ms ease,color 750ms ease!important}
+.select-source .table th,.select-result .table th{font-size:10px!important;line-height:1.3!important;padding:4px!important;font-weight:600!important;transition:background-color 750ms ease,color 750ms ease!important}
+.select-source td.inplace-focus,.select-result td.inplace-focus{font-weight:400!important}
+.query-card .code .code-line,.query-card .code .code-line.inplace-focus,.video-mode .query-card .code .code-line.inplace-focus{font-size:13px!important;line-height:1.45!important;padding-top:3px!important;padding-bottom:3px!important;width:92%;scale:1;transform-origin:left center;white-space:pre-wrap!important;transition:scale 850ms cubic-bezier(.22,1,.36,1),background-color 750ms ease,color 750ms ease!important}
+.query-card .code .code-line.inplace-focus,.video-mode .query-card .code .code-line.inplace-focus{scale:1.075}
+.chapter-callout,.chapter-callout.inplace-focus,.question,.question.inplace-focus{font-size:11px!important;line-height:1.5!important;width:97%;scale:1;transform-origin:left center;transition:scale 850ms cubic-bezier(.22,1,.36,1),background-color 750ms ease!important}
+.chapter-callout.inplace-focus,.question.inplace-focus{scale:1.025;background-color:#edf0ed}
+.recap-box b,.recap-box.inplace-focus b,.video-mode .recap-box.inplace-focus b{font-size:29px!important;line-height:1.2!important}
+.recap-box{scale:1;transform-origin:center;transition:scale 850ms cubic-bezier(.22,1,.36,1),background-color 750ms ease!important}.recap-box.inplace-focus{scale:1.025;background-color:#e7edf0}
+.select-source,.select-result{width:94%;margin-block:5px;scale:1;transform-origin:left center;transition:scale 950ms cubic-bezier(.22,1,.36,1),background-color 750ms ease!important}
+.select-source.table-emphasis,.select-result.table-emphasis{scale:1.055}
+#narrationPointer{position:absolute;left:0;top:0;width:14px;height:19px;z-index:9;pointer-events:none;opacity:0;transform-origin:0 0;color:#365e85;filter:drop-shadow(0 1px 1px #ffffff80)}
+#narrationPointer svg{display:block;width:100%;height:100%}
+.persistent-header .title span,.code .kw,.select-concept b,.from-concept b{border-radius:3px;transition:background-color 450ms ease,color 450ms ease}
+.persistent-header .title span.is-speaking,.code .kw.is-speaking,.select-concept b.is-speaking,.from-concept b.is-speaking{background:#365e85;color:#fffdf5!important}
+@media(prefers-reduced-motion:reduce){.select-source,.select-result,.query-card .code .code-line,.recap-box{transition:none!important;scale:1!important}}
+</style><style>
+.stage .select-result .table tr.inplace-focus td,.stage .select-result .table tr.inplace-focus td:last-child{font-size:11px!important;font-weight:400!important;line-height:1.3!important;padding:3px 4px!important}
+</style></head>
 <body>
 <div class="mobile-top">VISTA PREVIA · 9:16</div>
 <div class="stage-frame">
@@ -254,7 +274,9 @@ body.exporting{display:flex;flex-direction:row;justify-content:center;align-item
   </section>
   <div class="step-list" id="stepList"></div>
   <label class="option"><input type="checkbox" id="captions" /> Mostrar subtítulos cortos</label>
-  <label class="option"><input type="checkbox" id="slowZoom" checked /> Ampliar la línea que se explica</label>
+  <label class="option"><input type="checkbox" id="slowZoom" checked /> Ampliar la parte que se explica</label>
+  <label class="option"><input id="teachingPointer" type="checkbox" checked /> Puntero de explicación</label>
+  <label class="option"><input id="pointerClick" type="checkbox" checked /> Clic suave al señalar</label>
   <label class="option" for="voiceFile">Cambiar narración (opcional)</label>
   <input id="voiceFile" type="file" accept="audio/*" style="width:100%;margin-top:8px;font-size:11px" />
   <button id="restoreVoice" class="btn audio-restore" disabled>Restaurar audio original · voz A</button>
@@ -2215,15 +2237,16 @@ const voiceAudio=el('voiceAudio');const originalVoiceSrc=voiceAudio.getAttribute
 const voiceReady=()=>Number.isFinite(voiceAudio.duration)&&voiceAudio.duration>0;
 const format=s=>`${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;
 
+const sceneFadeMs=320;
 function render(i,fromAudio=false){
  if(fromAudio && playing && i!==index && !matchMedia('(prefers-reduced-motion: reduce)').matches){
   if(transitionTarget===i)return;
   clearTimeout(transitionTimer);transitionTarget=i;
-  [el('sceneHead'),el('sceneDesc'),el('content')].forEach(node=>node.animate([{opacity:1},{opacity:0}],{duration:220,easing:'ease-in',fill:'forwards'}));
+  [el('sceneHead'),el('sceneDesc'),el('content')].forEach(node=>node.animate([{opacity:1},{opacity:0}],{duration:sceneFadeMs,easing:'ease-in-out',fill:'forwards'}));
   transitionTimer=setTimeout(()=>{
    [el('sceneHead'),el('sceneDesc'),el('content')].forEach(node=>node.getAnimations().forEach(a=>a.cancel()));
    transitionTarget=null;drawScene(i,true);
-  },220);return;
+  },sceneFadeMs);return;
  }
  clearTimeout(transitionTimer);transitionTarget=null;
  el('content').getAnimations().forEach(a=>a.cancel());
@@ -2234,22 +2257,22 @@ function drawScene(i,fromAudio=false){hideLens();index=(i+parts.length)%parts.le
 function pause(){if(transitionTimer){clearTimeout(transitionTimer);transitionTimer=null;transitionTarget=null;[el('sceneHead'),el('sceneDesc'),el('content')].forEach(node=>node.getAnimations().forEach(a=>a.cancel()))}voiceAudio.pause();playing=false;el('stage').classList.remove('playing');clearTimeout(timer);timer=null;el('play').textContent='▶ Reproducir'}
 function next(){render(index+1);if(playing){schedule()}}
 function schedule(){clearTimeout(timer);if(voiceReady())return;startProgress();timer=setTimeout(()=>{if(index===parts.length-1){pause();return}next()},times[index]*1000)}
-function toggle(){if(playing){pause()}else{playing=true;el('play').textContent='Ⅱ Pausar';if(voiceReady()){if(exportAudioContext&&exportAudioContext.state==='suspended')exportAudioContext.resume();if(voiceAudio.ended){render(0)}voiceAudio.play().catch(()=>{pause();el('voiceStatus').textContent='No se pudo reproducir el audio. Vuelve a pulsar Reproducir.'})}schedule()}}
+function toggle(){prepareTeachingAudio();if(playing){pause()}else{playing=true;el('play').textContent='Ⅱ Pausar';if(voiceReady()){if(exportAudioContext&&exportAudioContext.state==='suspended')exportAudioContext.resume();if(voiceAudio.ended){render(0)}voiceAudio.play().catch(()=>{pause();el('voiceStatus').textContent='No se pudo reproducir el audio. Vuelve a pulsar Reproducir.'})}schedule()}}
 
 let motion=[];let transitionTimer=null;let transitionTarget=null;
 function animateScene(){
  motion.forEach(a=>a.cancel());motion=[];
  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
  const run=(node,frames,options)=>{if(node)motion.push(node.animate(frames,{fill:'both',...options}));};
- ['sceneHead','sceneDesc'].forEach((id,i)=>run(el(id),[{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],{duration:850,delay:80+i*160,easing:'cubic-bezier(.16,1,.3,1)'}));
- el('content').querySelectorAll(':scope > *').forEach((node,i)=>run(node,[{opacity:0,transform:'translateY(10px)'},{opacity:1,transform:'translateY(0)'}],{duration:900,delay:180+i*200,easing:'cubic-bezier(.16,1,.3,1)'}));
+ ['sceneHead','sceneDesc'].forEach((id,i)=>run(el(id),[{opacity:0,transform:'translateY(5px)'},{opacity:1,transform:'translateY(0)'}],{duration:750,delay:60+i*90,easing:'cubic-bezier(.16,1,.3,1)'}));
+ el('content').querySelectorAll(':scope > *').forEach((node,i)=>run(node,[{opacity:0,transform:'translateY(6px)'},{opacity:1,transform:'translateY(0)'}],{duration:750,delay:120+i*90,easing:'cubic-bezier(.16,1,.3,1)'}));
  el('content').querySelectorAll('tbody tr').forEach((node,i)=>{
  const dim=node.matches('.fade-row,.expired-row');
- run(node,[{opacity:0,transform:'translateX(-6px)'},{opacity:1,transform:'translateX(0)'}],{duration:650,delay:600+i*140,easing:'ease-out',fill:'backwards'});
+ run(node,[{opacity:0,transform:'translateX(-6px)'},{opacity:1,transform:'translateX(0)'}],{duration:650,delay:260+i*65,easing:'ease-out',fill:'backwards'});
  });
  el('content').querySelectorAll('.total').forEach((node,i)=>run(node,[{opacity:0,transform:'translateY(8px) scale(.98)'},{opacity:1,transform:'translateY(0) scale(1)'}],{duration:550,delay:750+i*200,easing:'cubic-bezier(.16,1,.3,1)',fill:'backwards'}));
  el('content').querySelectorAll('.receipt').forEach((node,i)=>run(node,[{opacity:0,transform:'translateY(12px) rotate(0deg)'},{opacity:1,transform:'translateY(0) rotate('+(i?2:-2)+'deg)'}],{duration:900,delay:700+i*200,easing:'cubic-bezier(.16,1,.3,1)'}));
- el('content').querySelectorAll('.intro-sum').forEach(node=>run(node,[{opacity:0,transform:'translateY(10px)'},{opacity:1,transform:'translateY(0)'}],{duration:800,delay:1350,easing:'ease-out'}));
+ el('content').querySelectorAll('.intro-sum').forEach(node=>run(node,[{opacity:0,transform:'translateY(6px)'},{opacity:1,transform:'translateY(0)'}],{duration:800,delay:1350,easing:'ease-out'}));
 }
 function startProgress(){
  const stage=el('stage');stage.classList.remove('playing');
@@ -2298,6 +2321,7 @@ const groupChecks=[];
 
 function hideLens(){el('stage').classList.remove('focus-active');requestFit()}
 function guideScene(local){
+ syncSpokenTerms(local);updateTableEmphasis(local);
  const viewport=el('viewport');let chosen=-1;
  guides[index].forEach((cue,i)=>{if(local>=cue[0])chosen=i});
  const key=index+':'+chosen+':'+el('slowZoom').checked;if(key===lastGuide)return;lastGuide=key;
@@ -2334,13 +2358,95 @@ function syncNarration(){
  if(index!==target)render(target,true);else guideScene(elapsed-times.slice(0,index).reduce((a,b)=>a+b,0));
  el('progress').style.width=Math.min(100,elapsed/totalTime*100)+'%';
 }
-function followAudio(){cancelAnimationFrame(playbackFrame);const frame=()=>{syncNarration();if(!voiceAudio.paused&&!voiceAudio.ended)playbackFrame=requestAnimationFrame(frame)};frame()}
+function followAudio(){cancelAnimationFrame(playbackFrame);const frame=()=>{syncNarration();updateTeachingPointer(narrationTime());followTeachingClicks();if(!voiceAudio.paused&&!voiceAudio.ended)playbackFrame=requestAnimationFrame(frame)};frame()}
 voiceAudio.addEventListener('play',followAudio);
 voiceAudio.addEventListener('pause',()=>cancelAnimationFrame(playbackFrame));
-voiceAudio.addEventListener('seeked',syncNarration);
+voiceAudio.addEventListener('seeked',()=>{syncNarration();updateTeachingPointer(narrationTime());teachingLastTime=voiceAudio.currentTime});
 voiceAudio.ontimeupdate=syncNarration;
 
 voiceAudio.onended=()=>{pause();if(index!==parts.length-1)render(parts.length-1,true);motion.forEach(a=>{try{a.finish()}catch{}});guideScene(times[index]);fitLesson();el('progress').style.width='100%';};
+
+// One media clock drives the live pointer, click cues and offline export.
+const teachingPointer=document.createElement('div');teachingPointer.id='narrationPointer';teachingPointer.setAttribute('aria-hidden','true');
+teachingPointer.innerHTML='<svg viewBox="0 0 18 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 8H9V3L17 12L9 21V16H2Z" fill="#365e85" stroke="#fffdf7" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+el('stage').append(teachingPointer);
+let teachingPoint=null,teachingAudio=null,teachingLastTime=-1;
+const teachingMove=.95;
+function teachingEase(t){t=Math.max(0,Math.min(1,t));return t*t*t*(t*(t*6-15)+10)}
+function teachingCue(local){let cue=-1;guides[index].forEach((g,i)=>{if(local>=g[0])cue=i});return cue}
+function teachingTargets(selector){
+ if(!selector)return[];
+ const nodes=[...el('content').querySelectorAll(selector)].map(n=>n.closest('.code-line')||n);
+ return [...new Set(nodes)].filter(n=>!nodes.some(other=>other!==n&&other.contains(n))&&n.getBoundingClientRect().width>0&&(!n.closest('[aria-hidden="true"]')));
+}
+function updateTableEmphasis(local){
+ const cue=teachingCue(local),nodes=cue<0?[]:teachingTargets(guides[index][cue][1]);
+ const tables=new Set(nodes.map(n=>n.closest('.select-source,.select-result')).filter(Boolean));
+ el('content').querySelectorAll('.select-source,.select-result').forEach(n=>n.classList.toggle('table-emphasis',el('slowZoom').checked&&tables.has(n)));
+}
+function teachingAnchor(selector){
+ const nodes=teachingTargets(selector);if(!nodes.length)return null;
+ const stage=el('stage'),r=stage.getBoundingClientRect(),sx=r.width/stage.offsetWidth,sy=r.height/stage.offsetHeight;
+ const rects=nodes.map(n=>n.getBoundingClientRect()),rails=nodes.map(n=>(n.closest('.select-source,.select-result')||n).getBoundingClientRect()),left=Math.min(...rails.map(r=>r.left)),top=Math.min(...rects.map(r=>r.top)),bottom=Math.max(...rects.map(r=>r.bottom));
+ const broad=nodes.length===1&&!nodes[0].matches('tr,td,th,.code-line,.sql-paren');
+ // The tip rests in the margin, never over a value or SQL character.
+ return{x:Math.max(3,(left-r.left)/sx-stage.clientLeft-17),y:(top-r.top)/sy-stage.clientTop+(broad?9:((bottom-top)/sy)/2)-9.5};
+}
+function updateTeachingPointer(elapsed){
+ const start=times.slice(0,index).reduce((a,b)=>a+b,0),local=elapsed-start,cue=teachingCue(local),list=guides[index];
+ let point=null;
+ if(el('teachingPointer').checked&&cue>=0&&local>=0&&local<times[index]){
+  const selected=list[cue],dest=teachingAnchor(selected[1]),previous=cue>0?teachingAnchor(list[cue-1][1]):null;
+  const age=Math.max(0,local-Math.max(selected[0],index?sceneFadeMs/1000:0)),t=teachingEase(age/teachingMove);
+  if(dest){const from=previous||dest;point={x:from.x+(dest.x-from.x)*t,y:from.y+(dest.y-from.y)*t,opacity:previous?1:teachingEase(age/.45)};}
+  else if(previous){point={...previous,opacity:1-teachingEase((local-selected[0])/.4)}}
+  if(point)point.opacity*=teachingEase(Math.max(0,times[index]-local)/.32);
+ }
+ teachingPoint=point;teachingPointer.style.opacity=point?point.opacity:0;
+ if(point)teachingPointer.style.transform=`translate(${point.x}px,${point.y}px)`;
+ return point;
+}
+function drawTeachingPointer(ctx,profile){
+ const p=teachingPoint;if(!p||p.opacity<=0)return;
+ ctx.save();ctx.scale(profile.width/el('stage').clientWidth,profile.height/el('stage').clientHeight);ctx.translate(p.x,p.y);ctx.scale(14/18,19/24);ctx.globalAlpha=p.opacity;
+ ctx.beginPath();ctx.moveTo(2,8);ctx.lineTo(9,8);ctx.lineTo(9,3);ctx.lineTo(17,12);ctx.lineTo(9,21);ctx.lineTo(9,16);ctx.lineTo(2,16);ctx.closePath();ctx.fillStyle='#365e85';ctx.fill();ctx.strokeStyle='#fffdf7';ctx.lineWidth=1.6;ctx.lineJoin='round';ctx.stroke();ctx.restore();
+}
+function teachingClickTimes(duration){
+ if(!el('teachingPointer').checked||!el('pointerClick').checked)return[];
+ const factor=voiceURL?duration/totalTime:1,out=[];let start=0;
+ guides.forEach((list,scene)=>{list.forEach((cue,i)=>{
+  const at=(start+Math.max(cue[0],scene?sceneFadeMs/1000:0))*factor+teachingMove+.08;
+  const next=(start+(list[i+1]?.[0]??times[scene]))*factor;
+  if(cue[1]&&at<duration&&at<next-.15&&(!out.length||at-out[out.length-1]>=4.5))out.push(at);
+ });start+=times[scene]});return out;
+}
+function teachingClickSample(i,rate){const t=i/rate;if(t>=.045)return 0;const env=Math.min(1,t/.0012)*Math.exp(-t*160);return .026*env*(Math.sin(2*Math.PI*1450*t)+.3*Math.sin(2*Math.PI*2650*t));}
+function prepareTeachingAudio(){
+ if(!el('pointerClick').checked)return;
+ try{teachingAudio ||= new AudioContext();if(teachingAudio.state==='suspended')teachingAudio.resume().catch(()=>{});}catch{}
+}
+function followTeachingClicks(){
+ const now=voiceAudio.currentTime,previous=teachingLastTime;teachingLastTime=now;
+ if(voiceAudio.paused||previous<0||now<previous||now-previous>.3||!teachingAudio||teachingAudio.state!=='running')return;
+ if(!teachingClickTimes(voiceAudio.duration).some(t=>t>previous&&t<=now))return;
+ const buffer=teachingAudio.createBuffer(1,Math.ceil(.045*teachingAudio.sampleRate),teachingAudio.sampleRate),data=buffer.getChannelData(0);
+ for(let i=0;i<data.length;i++)data[i]=teachingClickSample(i,buffer.sampleRate);
+ const sound=teachingAudio.createBufferSource();sound.buffer=buffer;sound.connect(teachingAudio.destination);sound.start();
+}
+function mixTeachingClicks(audio){
+ const cues=teachingClickTimes(audio.duration),count=Math.ceil(audio.sampleRate*.045);
+ for(let channel=0;channel<audio.numberOfChannels;channel++){const data=audio.getChannelData(channel);for(const cue of cues){const at=Math.round(cue*audio.sampleRate);for(let i=0;i<count&&at+i<data.length;i++)data[at+i]=Math.max(-1,Math.min(1,data[at+i]+teachingClickSample(i,audio.sampleRate)));}}
+}
+el('teachingPointer').onchange=()=>updateTeachingPointer(narrationTime());
+el('pointerClick').onchange=()=>{if(el('pointerClick').checked)prepareTeachingAudio()};
+voiceAudio.addEventListener('pause',()=>{teachingLastTime=-1});
+
+const spokenTerms=[[{"term": "SELECT", "start": 1.2555, "end": 3.0555}, {"term": "FROM", "start": 1.6759, "end": 3.4759}, {"term": "SELECT", "start": 15.6714, "end": 17.4714}, {"term": "FROM", "start": 18.4668, "end": 20.2668}], [], [{"term": "SELECT", "start": 3.4668, "end": 5.2668}, {"term": "FROM", "start": 9.2282, "end": 11.0282}], [{"term": "SELECT", "start": 6.6373, "end": 8.4373}, {"term": "FROM", "start": 14.6941, "end": 16.4941}, {"term": "FROM", "start": 17.2395, "end": 19.0395}, {"term": "SELECT", "start": 18.8191, "end": 20.6191}, {"term": "FROM", "start": 20.7964, "end": 22.5964}], [{"term": "SELECT", "start": 3.3645, "end": 5.1645}, {"term": "FROM", "start": 4.5805, "end": 6.3805}, {"term": "SELECT", "start": 18.7964, "end": 20.5964}], [{"term": "SELECT", "start": 3.5691, "end": 5.3691}, {"term": "FROM", "start": 6.2623, "end": 8.0623}], [{"term": "SELECT", "start": 5.9327, "end": 7.7327}, {"term": "AS", "start": 6.66, "end": 8.46}, {"term": "FROM", "start": 9.9214, "end": 11.7214}, {"term": "AS", "start": 11.5805, "end": 13.3805}], [{"term": "SELECT", "start": 1.71, "end": 3.51}, {"term": "FROM", "start": 4.0509, "end": 5.8509}, {"term": "SELECT", "start": 19.3986, "end": 21.1986}, {"term": "FROM", "start": 24.0236, "end": 25.8236}]];
+let spokenTermKey='';
+function syncSpokenTerms(local){
+ const active=[...new Set(spokenTerms[index].filter(e=>local>=e.start&&local<e.end).map(e=>e.term))].sort();spokenTermKey=index+':'+active.join(',');
+ document.querySelectorAll('.persistent-header .title span,.code .kw,.select-concept b,.from-concept b').forEach(n=>{const word=n.textContent.trim();if(['SELECT','FROM','AS'].includes(word))n.classList.toggle('is-speaking',active.includes(word))});
+}
 
 const lessonObserver=new ResizeObserver(requestFit);lessonObserver.observe(el('lessonLayout'));lessonObserver.observe(el('viewport'));lessonObserver.observe(el('lessonBodyFrame'));
 if(window.visualViewport)window.visualViewport.addEventListener('resize',sizeVideo);
@@ -2398,6 +2504,7 @@ async function paintNativeFrame(session){
  for(const [value,name]of assets)clone.style.setProperty(name,value);
  Object.assign(clone.style,{position:'relative',left:'0',top:'0',transform:'none',width:'430px',height:(430*16/9)+'px',border:'0',borderRadius:'0',boxShadow:'none',margin:'0'});
  // The progress bar is painted separately so static slides need no repeated rasterization.
+ clone.querySelector('#narrationPointer')?.remove();
  clone.querySelector('#progress').style.width='0px';
  const serialized=new XMLSerializer().serializeToString(clone);
  const svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+session.profile.width+'" height="'+session.profile.height+'" viewBox="0 0 430 '+(430*16/9)+'"><foreignObject width="430" height="'+(430*16/9)+'"><div xmlns="http://www.w3.org/1999/xhtml"><style>'+session.fonts+'</style>'+serialized+'</div></foreignObject></svg>';
@@ -2431,7 +2538,7 @@ async function startExport(){
   let videoConfig;for(const hardwareAcceleration of ['prefer-hardware','prefer-software']){const config={codec:profile.fps>30?'avc1.4d002a':'avc1.4d0029',width:profile.width,height:profile.height,framerate:profile.fps,bitrate:profile.bitrate,latencyMode:'quality',hardwareAcceleration,avc:{format:'avc'}};if((await VideoEncoder.isConfigSupported(config)).supported){videoConfig=config;break}}
   if(!videoConfig)throw new Error('Este navegador no permite codificar H.264 a esta resolución. Prueba el modo Ligero o actualiza Chrome o Edge.');
   const bytes=await(await fetch(voiceAudio.currentSrc||voiceAudio.src)).arrayBuffer();checkExport(session);
-  const audioContext=new OfflineAudioContext(1,1,48000);const decoded=await audioContext.decodeAudioData(bytes);const channels=Math.min(2,decoded.numberOfChannels),resampler=new OfflineAudioContext(channels,Math.ceil(decoded.duration*48000),48000),audioSource=resampler.createBufferSource();audioSource.buffer=decoded;audioSource.connect(resampler.destination);audioSource.start();const audio=await resampler.startRendering();checkExport(session);
+  const audioContext=new OfflineAudioContext(1,1,48000);const decoded=await audioContext.decodeAudioData(bytes);const channels=Math.min(2,decoded.numberOfChannels),resampler=new OfflineAudioContext(channels,Math.ceil(decoded.duration*48000),48000),audioSource=resampler.createBufferSource();audioSource.buffer=decoded;audioSource.connect(resampler.destination);audioSource.start();const audio=await resampler.startRendering();mixTeachingClicks(audio);checkExport(session);
   let audioCodec;for(const codec of ['mp4a.40.2','opus'])if((await AudioEncoder.isConfigSupported({codec,sampleRate:audio.sampleRate,numberOfChannels:channels,bitrate:160000})).supported){audioCodec=codec;break}
   if(!audioCodec)throw new Error('Este navegador no permite codificar el audio. Usa Chrome o Edge actualizado.');
   const target=new Mp4Muxer.ArrayBufferTarget(),muxer=new Mp4Muxer.Muxer({target,video:{codec:'avc',width:profile.width,height:profile.height,frameRate:profile.fps},audio:{codec:audioCodec==='opus'?'opus':'aac',sampleRate:audio.sampleRate,numberOfChannels:channels},fastStart:'in-memory',firstTimestampBehavior:'strict'});
@@ -2450,15 +2557,16 @@ async function startExport(){
    checkExport(session);const time=frame/profile.fps,elapsed=voiceURL?Math.min(time,audio.duration)/audio.duration*totalTime:Math.min(time,audio.duration),milliseconds=time*1000;
    const activeBefore=exportAnimations(session,milliseconds);let end=0,targetScene=parts.length-1;
    for(let i=0;i<times.length;i++){end+=times[i];if(elapsed<end-.001){targetScene=i;break}}
-   // Preserve the 220 ms fade between scenes without wall-clock timers.
-   if(targetScene!==index&&!pendingScene){pendingScene={scene:targetScene,at:milliseconds};for(const id of ['sceneHead','sceneDesc','content'])el(id).animate([{opacity:1},{opacity:0}],{duration:220,easing:'ease-in',fill:'forwards'})}
-   if(pendingScene&&milliseconds-pendingScene.at>=220){for(const id of ['sceneHead','sceneDesc','content'])el(id).getAnimations().forEach(a=>a.cancel());drawScene(pendingScene.scene,true);pendingScene=null}
+   // Match the playback fade clock without wall-clock timers.
+   if(targetScene!==index&&!pendingScene){pendingScene={scene:targetScene,at:milliseconds};for(const id of ['sceneHead','sceneDesc','content'])el(id).animate([{opacity:1},{opacity:0}],{duration:sceneFadeMs,easing:'ease-in-out',fill:'forwards'})}
+   if(pendingScene&&milliseconds-pendingScene.at>=sceneFadeMs){for(const id of ['sceneHead','sceneDesc','content'])el(id).getAnimations().forEach(a=>a.cancel());drawScene(pendingScene.scene,true);pendingScene=null}
    const local=elapsed-times.slice(0,index).reduce((a,b)=>a+b,0);guideScene(local);fitLesson();
    // Reading styles creates CSS transitions, then their clocks are paused as well.
    void el('content').offsetHeight;const activeAfter=exportAnimations(session,milliseconds);
-   const state=index+'|'+lastGuide;
+   const state=index+'|'+lastGuide+'|'+spokenTermKey;
    if(frame===0||activeBefore||activeAfter||wasActive||state!==previousState)await paintNativeFrame(session);
    context.drawImage(session.base,0,0);const bar=session.bar;context.fillStyle=bar.color;context.fillRect(bar.x,bar.y,bar.width*Math.min(1,elapsed/totalTime),bar.height);
+   updateTeachingPointer(elapsed);drawTeachingPointer(context,profile);
    const timestamp=Math.round(frame*1e6/profile.fps),nextTimestamp=Math.round((frame+1)*1e6/profile.fps),videoFrame=new VideoFrame(canvas,{timestamp,duration:nextTimestamp-timestamp});
    try{encoder.encode(videoFrame,{keyFrame:frame%(profile.fps*2)===0})}finally{videoFrame.close()}
    if(encoder.encodeQueueSize>6)await encoder.flush();
