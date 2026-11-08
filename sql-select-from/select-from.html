@@ -249,6 +249,10 @@ body.exporting{display:flex;flex-direction:row;justify-content:center;align-item
 .stage .recap-box.tutorial-enlarged{scale:1.06!important}
 .stage .question.tutorial-enlarged,.stage .chapter-callout.tutorial-enlarged{scale:1.04!important}
 @media(prefers-reduced-motion:reduce){.stage .tutorial-enlarged{scale:1!important;transition:none!important}}
+</style><style>
+/* SQL lines may combine temporary enlargement and a restrained highlight. */
+.stage .query-card .code .code-line{background-color:transparent!important;transition:scale 900ms cubic-bezier(.45,0,.2,1),background-color 900ms ease!important}
+.stage .query-card .code .code-line.tutorial-enlarged{background-color:#e4a58a20!important}
 </style></head>
 <body>
 <div class="mobile-top">VISTA PREVIA · 9:16</div>
