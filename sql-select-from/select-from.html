@@ -253,6 +253,14 @@ body.exporting{display:flex;flex-direction:row;justify-content:center;align-item
 /* SQL lines may combine temporary enlargement and a restrained highlight. */
 .stage .query-card .code .code-line{background-color:transparent!important;transition:scale 900ms cubic-bezier(.45,0,.2,1),background-color 900ms ease!important}
 .stage .query-card .code .code-line.tutorial-enlarged{background-color:#e4a58a20!important}
+</style><style>
+/* Emphasize narrated lesson content; the persistent header never participates. */
+.stage .select-source,.stage .select-result,.stage .recap-box,.stage .question,.stage .chapter-callout{transition:scale 900ms cubic-bezier(.45,0,.2,1),background-color 900ms ease!important}
+.stage .select-source.tutorial-enlarged,.stage .select-result.tutorial-enlarged,.stage .recap-box.tutorial-enlarged,.stage .question.tutorial-enlarged,.stage .chapter-callout.tutorial-enlarged{background-color:#f3e7d7!important}
+.stage .table tr td,.stage .table thead th,.stage .table tbody td{transition:background-color 900ms ease,color 900ms ease!important}
+.stage .table tr.tutorial-enlarged td,.stage .table thead.tutorial-enlarged th,.stage .table tbody.tutorial-enlarged td{background-color:#f1cf9f!important}
+.stage .tutorial-value{border-radius:2px;transition:scale 900ms cubic-bezier(.45,0,.2,1),background-color 900ms ease!important}
+.stage .tutorial-value.tutorial-enlarged{background-color:#f1cf9f!important}
 </style></head>
 <body>
 <div class="mobile-top">VISTA PREVIA · 9:16</div>
@@ -2474,7 +2482,7 @@ const spokenTerms=[[{"term": "SELECT", "start": 1.2555, "end": 3.0555}, {"term":
 let spokenTermKey='';
 function syncSpokenTerms(local){
  const active=[...new Set(spokenTerms[index].filter(e=>local>=e.start&&local<e.end).map(e=>e.term))].sort();spokenTermKey=index+':'+active.join(',');
- document.querySelectorAll('.persistent-header .title span,.code .kw,.select-concept b,.from-concept b').forEach(n=>{const word=n.textContent.trim();if(['SELECT','FROM','AS'].includes(word))n.classList.toggle('is-speaking',active.includes(word))});
+ document.querySelectorAll('.code .kw,.select-concept b,.from-concept b').forEach(n=>{const word=n.textContent.trim();if(['SELECT','FROM','AS'].includes(word))n.classList.toggle('is-speaking',active.includes(word))});
 }
 
 const lessonObserver=new ResizeObserver(requestFit);lessonObserver.observe(el('lessonLayout'));lessonObserver.observe(el('viewport'));lessonObserver.observe(el('lessonBodyFrame'));
