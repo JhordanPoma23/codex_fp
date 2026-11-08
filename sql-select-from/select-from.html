@@ -237,11 +237,11 @@ body.exporting{display:flex;flex-direction:row;justify-content:center;align-item
 .stage .select-result .table tr.inplace-focus td,.stage .select-result .table tr.inplace-focus td:last-child{font-size:11px!important;font-weight:400!important;line-height:1.3!important;padding:3px 4px!important}
 </style><style>
 /* Temporary tutorial enlargement. Original colors remain unchanged. */
-.stage .select-source,.stage .select-result{width:90%;scale:1!important;transition:scale 900ms cubic-bezier(.45,0,.2,1)!important}
-.stage .query-card .code .code-line,.stage .query-card .code .code-line.inplace-focus{width:88%;scale:1!important;transition:scale 900ms cubic-bezier(.45,0,.2,1)!important}
-.stage .recap-box,.stage .recap-box.inplace-focus{width:94%;scale:1!important;transition:scale 900ms cubic-bezier(.45,0,.2,1)!important}
-.stage .chapter-callout,.stage .chapter-callout.inplace-focus,.stage .question,.stage .question.inplace-focus{scale:1!important;transition:scale 900ms cubic-bezier(.45,0,.2,1)!important}
-.stage .table tr,.stage .table thead,.stage .table tbody,.stage .tutorial-value{scale:1;transform-origin:left center;transition:scale 900ms cubic-bezier(.45,0,.2,1)!important}
+.stage .select-source,.stage .select-result{width:90%;scale:1!important;transition:scale 1000ms cubic-bezier(.45,0,.2,1)!important}
+.stage .query-card .code .code-line,.stage .query-card .code .code-line.inplace-focus{width:88%;scale:1!important;transition:scale 1000ms cubic-bezier(.45,0,.2,1)!important}
+.stage .recap-box,.stage .recap-box.inplace-focus{width:94%;scale:1!important;transition:scale 1000ms cubic-bezier(.45,0,.2,1)!important}
+.stage .chapter-callout,.stage .chapter-callout.inplace-focus,.stage .question,.stage .question.inplace-focus{scale:1!important;transition:scale 1000ms cubic-bezier(.45,0,.2,1)!important}
+.stage .table tr,.stage .table thead,.stage .table tbody,.stage .tutorial-value{scale:1;transform-origin:left center;transition:scale 1000ms cubic-bezier(.45,0,.2,1)!important}
 .tutorial-value{display:inline-block}
 .stage .select-source.tutorial-enlarged,.stage .select-result.tutorial-enlarged,.stage .table tr.tutorial-enlarged,.stage .table thead.tutorial-enlarged,.stage .table tbody.tutorial-enlarged{scale:1.10!important}
 .stage .query-card .code .code-line.tutorial-enlarged{scale:1.12!important}
@@ -251,20 +251,31 @@ body.exporting{display:flex;flex-direction:row;justify-content:center;align-item
 @media(prefers-reduced-motion:reduce){.stage .tutorial-enlarged{scale:1!important;transition:none!important}}
 </style><style>
 /* SQL lines may combine temporary enlargement and a restrained highlight. */
-.stage .query-card .code .code-line{background-color:transparent!important;transition:scale 900ms cubic-bezier(.45,0,.2,1),background-color 900ms ease!important}
+.stage .query-card .code .code-line{background-color:transparent!important;transition:scale 1000ms cubic-bezier(.45,0,.2,1),background-color 1000ms ease!important}
 .stage .query-card .code .code-line.tutorial-enlarged{background-color:#73777b66!important}
 </style><style>
 /* Emphasize narrated lesson content; the persistent header never participates. */
-.stage .select-source,.stage .select-result,.stage .recap-box,.stage .question,.stage .chapter-callout{transition:scale 900ms cubic-bezier(.45,0,.2,1),background-color 900ms ease!important}
+.stage .select-source,.stage .select-result,.stage .recap-box,.stage .question,.stage .chapter-callout{transition:scale 1000ms cubic-bezier(.45,0,.2,1),background-color 1000ms ease!important}
 .stage .select-source.tutorial-enlarged,.stage .select-result.tutorial-enlarged,.stage .question.tutorial-enlarged,.stage .chapter-callout.tutorial-enlarged{}
-.stage .table tr td,.stage .table thead th,.stage .table tbody td{transition:background-color 900ms ease,color 900ms ease!important}
+.stage .table tr td,.stage .table thead th,.stage .table tbody td{transition:background-color 1000ms ease,color 1000ms ease!important}
 .stage .table tr.tutorial-enlarged td,.stage .table thead.tutorial-enlarged th,.stage .table tbody.tutorial-enlarged td{background-color:#dde0de!important}
-.stage .tutorial-value{border-radius:2px;transition:scale 900ms cubic-bezier(.45,0,.2,1),background-color 900ms ease!important}
+.stage .tutorial-value{border-radius:2px;transition:scale 1000ms cubic-bezier(.45,0,.2,1),background-color 1000ms ease!important}
 
 </style><style>
 /* A continuous vertical strip identifies the selected column; values scale above it. */
 .stage .table th.tutorial-column-band,.stage .table td.tutorial-column-band{background-color:#dde0de!important}
 .stage .tutorial-value,.stage .tutorial-value.tutorial-enlarged{background-color:transparent!important}
+</style><style>
+/* Stronger tutorial enlargement, with space reserved for the expanded object. */
+.stage .select-source,.stage .select-result{width:85%;margin-block:12px}
+.stage .query-card .code .code-line,.stage .query-card .code .code-line.inplace-focus{width:84%}
+.stage .select-source.tutorial-enlarged,.stage .select-result.tutorial-enlarged,.stage .table tr.tutorial-enlarged,.stage .table thead.tutorial-enlarged,.stage .table tbody.tutorial-enlarged{scale:1.16!important}
+.stage .query-card .code .code-line.tutorial-enlarged{scale:1.18!important}
+.stage .tutorial-value.tutorial-enlarged{scale:1.28!important}
+/* A header row is blue; data rows and complete vertical bands are pale yellow. */
+.stage .table thead.tutorial-enlarged th{background-color:#dceef8!important}
+.stage .table tr.tutorial-enlarged td,.stage .table tbody.tutorial-enlarged td{background-color:#fff0bc!important}
+.stage .table th.tutorial-column-band,.stage .table td.tutorial-column-band{background-color:#fff0bc!important}
 </style></head>
 <body>
 <div class="mobile-top">VISTA PREVIA · 9:16</div>
