@@ -256,11 +256,15 @@ body.exporting{display:flex;flex-direction:row;justify-content:center;align-item
 </style><style>
 /* Emphasize narrated lesson content; the persistent header never participates. */
 .stage .select-source,.stage .select-result,.stage .recap-box,.stage .question,.stage .chapter-callout{transition:scale 900ms cubic-bezier(.45,0,.2,1),background-color 900ms ease!important}
-.stage .select-source.tutorial-enlarged,.stage .select-result.tutorial-enlarged,.stage .question.tutorial-enlarged,.stage .chapter-callout.tutorial-enlarged{background-color:#f3e7d7!important}
+.stage .select-source.tutorial-enlarged,.stage .select-result.tutorial-enlarged,.stage .question.tutorial-enlarged,.stage .chapter-callout.tutorial-enlarged{}
 .stage .table tr td,.stage .table thead th,.stage .table tbody td{transition:background-color 900ms ease,color 900ms ease!important}
-.stage .table tr.tutorial-enlarged td,.stage .table thead.tutorial-enlarged th,.stage .table tbody.tutorial-enlarged td{background-color:#f1cf9f!important}
+.stage .table tr.tutorial-enlarged td,.stage .table thead.tutorial-enlarged th,.stage .table tbody.tutorial-enlarged td{background-color:#dde0de!important}
 .stage .tutorial-value{border-radius:2px;transition:scale 900ms cubic-bezier(.45,0,.2,1),background-color 900ms ease!important}
-.stage .tutorial-value.tutorial-enlarged{background-color:#f1cf9f!important}
+
+</style><style>
+/* A continuous vertical strip identifies the selected column; values scale above it. */
+.stage .table th.tutorial-column-band,.stage .table td.tutorial-column-band{background-color:#dde0de!important}
+.stage .tutorial-value,.stage .tutorial-value.tutorial-enlarged{background-color:transparent!important}
 </style></head>
 <body>
 <div class="mobile-top">VISTA PREVIA · 9:16</div>
@@ -2415,7 +2419,11 @@ function updateTableEmphasis(local){
   }
  });
  const cue=teachingCue(local),age=cue<0?0:local-guides[index][cue][0];
- const targets=cue<0||age>=4.2||!el('slowZoom').checked?[]:teachingTargets(guides[index][cue][1]);
+ const rawTargets=cue<0||age>=4.2||!el('slowZoom').checked?[]:teachingTargets(guides[index][cue][1]);
+ // Paint the column itself, behind its values, rather than individual words.
+ const columnCells=new Set(rawTargets.filter(n=>n.matches('td,th')).flatMap(n=>[...n.closest('table').rows].map(row=>row.cells[n.cellIndex]).filter(Boolean)));
+ const targets=[...new Set([...rawTargets.filter(n=>!n.matches('td,th')),...columnCells])];
+ content.querySelectorAll('.table td,.table th').forEach(cell=>cell.classList.toggle('tutorial-column-band',columnCells.has(cell)));
  const enlarged=new Set(targets.map(n=>n.matches('td,th')?n.querySelector('.tutorial-value'):n).filter(Boolean));
  content.querySelectorAll('.tutorial-enlarged').forEach(n=>{if(!enlarged.has(n))n.classList.remove('tutorial-enlarged')});
  enlarged.forEach(n=>n.classList.add('tutorial-enlarged'));
